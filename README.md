@@ -101,5 +101,10 @@ To run this project locally, follow these steps:
     - **Customer**: `customer/home.html`
     - **Provider**: `provider/dashboard.html`
     - **Delivery Partner**: `delivery/dashboard.html`
-  
+
+### **Connect With Me**
+- 🐙 **GitHub**: [@mohitpandeycs](https://github.com/mohitpandeycs)
+- 💼 **LinkedIn**: [@mohitpandeycs](https://linkedin.com/in/mohitpandeycs)
+
+---
 **[⭐ Star this repo](https://github.com/mohitpandeycs/Digibhoj) • [🐛 Report Bug](https://github.com/mohitpandeycs/Digibhoj/issues) • [💡 Request Feature](https://github.com/mohitpandeycs/Digibhoj/issues/new)**
