@@ -1,0 +1,85 @@
+[
+    {
+        "id": "o1",
+        "customerId": "c1",
+        "providerId": "p1",
+        "providerName": "Sharma's Tiffin Service",
+        "items": [
+            {
+                "menuId": "m1",
+                "name": "North Indian Thali",
+                "quantity": 1,
+                "price": 120
+            }
+        ],
+        "total": 120,
+        "status": "delivered",
+        "orderDate": "2024-01-15T12:30:00Z",
+        "deliveryDate": "2024-01-15T13:15:00Z",
+        "address": "123 Main Street, Downtown",
+        "paymentMethod": "UPI",
+        "deliverySlot": "lunch"
+    },
+    {
+        "id": "o2",
+        "customerId": "c1",
+        "providerId": "p2",
+        "providerName": "South Spice Tiffin",
+        "items": [
+            {
+                "menuId": "m3",
+                "name": "South Indian Meals",
+                "quantity": 2,
+                "price": 100
+            }
+        ],
+        "total": 200,
+        "status": "preparing",
+        "orderDate": "2024-01-16T11:45:00Z",
+        "estimatedDelivery": "2024-01-16T12:30:00Z",
+        "address": "123 Main Street, Downtown",
+        "paymentMethod": "Card",
+        "deliverySlot": "lunch"
+    },
+    {
+        "id": "o3",
+        "customerId": "c1",
+        "providerId": "p1",
+        "providerName": "Sharma's Tiffin Service",
+        "planType": "weekly",
+        "planDetails": {
+            "type": "lunch",
+            "duration": "7 days",
+            "startDate": "2024-01-20",
+            "endDate": "2024-01-26"
+        },
+        "total": 800,
+        "status": "active",
+        "orderDate": "2024-01-16T10:00:00Z",
+        "address": "123 Main Street, Downtown",
+        "paymentMethod": "UPI",
+        "deliverySlot": "lunch"
+    },
+    {
+        "id": "o4",
+        "customerId": "c1",
+        "providerId": "p3",
+        "providerName": "Jain Satvik Meals",
+        "items": [
+            {
+                "menuId": "m5",
+                "name": "Jain Thali",
+                "quantity": 1,
+                "price": 140
+            }
+        ],
+        "total": 140,
+        "status": "pending",
+        "orderDate": "2024-01-16T13:20:00Z",
+        "estimatedDelivery": "2024-01-16T19:30:00Z",
+        "address": "123 Main Street, Downtown",
+        "paymentMethod": "COD",
+        "deliverySlot": "dinner"
+    }
+]
+

@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delivery Management - DigiBhoj</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/provider.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="provider-container">
+        <!-- Sidebar -->
+        <aside class="provider-sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <span class="logo-digi">Digi</span><span class="logo-bhoj">Bhoj</span>
+                </div>
+                <p class="provider-name">Provider Panel</p>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <a href="dashboard.html" class="nav-item">
+                    <i class="fas fa-tachometer-alt"></i>
+                    <span>Dashboard</span>
+                </a>
+                <a href="orders.html" class="nav-item">
+                    <i class="fas fa-clipboard-list"></i>
+                    <span>Orders</span>
+                </a>
+                <a href="menu.html" class="nav-item">
+                    <i class="fas fa-utensils"></i>
+                    <span>Menu</span>
+                </a>
+                <a href="delivery.html" class="nav-item active">
+                    <i class="fas fa-truck"></i>
+                    <span>Delivery</span>
+                </a>
+                <a href="analytics.html" class="nav-item">
+                    <i class="fas fa-chart-bar"></i>
+                    <span>Analytics</span>
+                </a>
+                <a href="profile.html" class="nav-item">
+                    <i class="fas fa-user"></i>
+                    <span>Profile</span>
+                </a>
+            </nav>
+            
+            <div class="sidebar-footer">
+                <a href="../auth.html" class="logout-btn">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Logout</span>
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="provider-main">
+            <!-- Header -->
+            <header class="provider-header">
+                <div class="header-left">
+                    <h1>Delivery Management</h1>
+                    <p>Assign orders to delivery personnel</p>
+                </div>
+                <div class="header-right">
+                    <div class="delivery-stats">
+                        <div class="stat-item">
+                            <span class="stat-number" id="unassigned-count">0</span>
+                            <span class="stat-label">Unassigned</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number" id="in-transit-count">0</span>
+                            <span class="stat-label">In Transit</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number" id="delivered-count">0</span>
+                            <span class="stat-label">Delivered</span>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Delivery Content -->
+            <section class="delivery-content">
+                <!-- Unassigned Orders -->
+                <div class="dashboard-card unassigned-orders-card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-clock"></i> Unassigned Orders</h3>
+                        <div class="card-actions">
+                            <button class="btn btn-primary" id="auto-assign-btn">
+                                <i class="fas fa-magic"></i>
+                                Auto Assign
+                            </button>
+                            <button class="btn btn-secondary" id="refresh-unassigned">
+                                <i class="fas fa-sync-alt"></i>
+                                Refresh
+                            </button>
+                        </div>
+                    </div>
+                    <div class="unassigned-orders-list" id="unassigned-orders-list">
+                        <!-- Unassigned orders will be populated by JS -->
+                    </div>
+                </div>
+
+                <!-- Delivery Assignment Form -->
+                <div class="dashboard-card assignment-form-card" id="assignment-form-card" style="display: none;">
+                    <div class="card-header">
+                        <h3><i class="fas fa-user-plus"></i> Assign Delivery</h3>
+                        <button class="close-btn" id="close-assignment-form">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                    <form class="assignment-form" id="assignment-form">
+                        <input type="hidden" id="selected-order-id">
+                        
+                        <div class="form-grid">
+                            <div class="form-section order-details">
+                                <h4>Order Details</h4>
+                                <div class="order-info">
+                                    <div class="info-item">
+                                        <label>Order ID:</label>
+                                        <span id="form-order-id">#DB123456</span>
+                                    </div>
+                                    <div class="info-item">
+                                        <label>Customer:</label>
+                                        <span id="form-customer-name">Rahul Sharma</span>
+                                    </div>
+                                    <div class="info-item">
+                                        <label>Amount:</label>
+                                        <span id="form-order-amount">₹250</span>
+                                    </div>
+                                    <div class="info-item">
+                                        <label>Items:</label>
+                                        <span id="form-order-items">2 items</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+
+                            <div class="form-section delivery-assignment">
+                                <h4>Delivery Assignment</h4>
+                                <div class="form-group">
+                                    <label for="delivery-boy">Select Delivery Boy *</label>
+                                    <select id="delivery-boy" name="deliveryBoy" required>
+                                        <option value="">Choose delivery boy...</option>
+                                        <!-- Options will be populated by JS -->
+                                    </select>
+                                </div>
+                                
+
+                                <div class="form-group">
+                                    <label for="pickup-time">Pickup Time *</label>
+                                    <input type="time" id="pickup-time" name="pickupTime" required>
+                                </div>
+                                
+
+                                <div class="form-group">
+                                    <label for="estimated-delivery">Estimated Delivery Time *</label>
+                                    <input type="time" id="estimated-delivery" name="estimatedDelivery" required>
+                                </div>
+                                
+
+                                <div class="form-group">
+                                    <label for="delivery-notes">Delivery Notes</label>
+                                    <textarea id="delivery-notes" name="deliveryNotes" rows="3" placeholder="Special instructions for delivery..."></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="address-section">
+                            <div class="address-item">
+                                <h5><i class="fas fa-store"></i> Pickup Location</h5>
+                                <p id="pickup-address">Rajesh Kitchen, Shop No. 5, Main Street, Andheri West, Mumbai - 400058</p>
+                            </div>
+                            <div class="address-item">
+                                <h5><i class="fas fa-home"></i> Drop Location</h5>
+                                <p id="drop-address">Loading...</p>
+                            </div>
+                        </div>
+                        
+                        <div class="form-actions">
+                            <button type="button" class="btn btn-secondary" id="cancel-assignment">Cancel</button>
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-truck"></i>
+                                Assign Delivery
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Assigned Deliveries -->
+                <div class="dashboard-card assigned-deliveries-card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-truck"></i> Assigned Deliveries</h3>
+                        <div class="delivery-filters">
+                            <div class="select-wrapper">
+                                <label class="select-label">Status</label>
+                                <div class="custom-select" id="delivery-status-filter-select">
+                                    <div class="select-display">
+                                        <span class="select-text">All Status</span>
+                                        <i class="select-arrow fas fa-chevron-down"></i>
+                                    </div>
+                                    <div class="select-dropdown">
+                                        <div class="select-option" data-value="all">
+                                            <span>All Status</span>
+                                        </div>
+                                        <div class="select-option" data-value="assigned">
+                                            <span>Assigned</span>
+                                        </div>
+                                        <div class="select-option" data-value="picked-up">
+                                            <span>Picked Up</span>
+                                        </div>
+                                        <div class="select-option" data-value="in-transit">
+                                            <span>In Transit</span>
+                                        </div>
+                                        <div class="select-option" data-value="delivered">
+                                            <span>Delivered</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="select-wrapper">
+                                <label class="select-label">Delivery Boy</label>
+                                <div class="custom-select" id="delivery-boy-filter-select">
+                                    <div class="select-display">
+                                        <span class="select-text">All Delivery Boys</span>
+                                        <i class="select-arrow fas fa-chevron-down"></i>
+                                    </div>
+                                    <div class="select-dropdown">
+                                        <div class="select-option" data-value="all">
+                                            <span>All Delivery Boys</span>
+                                        </div>
+                                        <!-- Options will be populated by JS -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="assigned-deliveries-table-container">
+                        <table class="assigned-deliveries-table">
+                            <thead>
+                                <tr>
+                                    <th>Order ID</th>
+                                    <th>Customer</th>
+                                    <th>Delivery Boy</th>
+                                    <th>Pickup Time</th>
+                                    <th>Delivery Time</th>
+                                    <th>Status</th>
+                                    <th>Contact</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="assigned-deliveries-tbody">
+                                <!-- Assigned deliveries will be populated by JS -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Delivery Boys Status -->
+                <div class="dashboard-card delivery-boys-card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-users"></i> Delivery Boys Status</h3>
+                        <button class="btn btn-secondary" id="refresh-delivery-boys">
+                            <i class="fas fa-sync-alt"></i>
+                            Refresh Status
+                        </button>
+                    </div>
+                    <div class="delivery-boys-grid" id="delivery-boys-grid">
+                        <!-- Delivery boys status will be populated by JS -->
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Delivery Boy Details Modal -->
+    <div class="modal" id="delivery-boy-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Delivery Boy Details</h3>
+                <button class="close-btn" id="close-delivery-boy-modal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="delivery-boy-info">
+                    <div class="boy-avatar">
+                        <img id="modal-boy-avatar" src="../assets/images/hero-bg.jpg" alt="Delivery Boy">
+                        <div class="status-indicator" id="modal-boy-status"></div>
+                    </div>
+                    <div class="boy-details">
+                        <h4 id="modal-boy-name">Delivery Boy Name</h4>
+                        <p id="modal-boy-phone">+91 98765 43210</p>
+                        <p id="modal-boy-vehicle">Bike - MH 01 AB 1234</p>
+                        <div class="boy-stats">
+                            <div class="stat">
+                                <span class="stat-number" id="modal-boy-deliveries">0</span>
+                                <span class="stat-label">Today's Deliveries</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number" id="modal-boy-rating">0.0</span>
+                                <span class="stat-label">Rating</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="current-orders">
+                    <h5>Current Orders</h5>
+                    <div class="orders-list" id="modal-boy-orders">
+                        <!-- Current orders will be populated by JS -->
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" id="call-delivery-boy">
+                    <i class="fas fa-phone"></i>
+                    Call Delivery Boy
+                </button>
+                <button class="btn btn-secondary" id="track-delivery-boy">
+                    <i class="fas fa-map-marker-alt"></i>
+                    Track Location
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../assets/js/provider.js"></script>
+</body>
+</html>
+

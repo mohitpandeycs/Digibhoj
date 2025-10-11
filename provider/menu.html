@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu Management - DigiBhoj</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/provider.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="provider-container">
+        <!-- Sidebar -->
+        <aside class="provider-sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <span class="logo-digi">Digi</span><span class="logo-bhoj">Bhoj</span>
+                </div>
+                <p class="provider-name">Provider Panel</p>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <a href="dashboard.html" class="nav-item">
+                    <i class="fas fa-tachometer-alt"></i>
+                    <span>Dashboard</span>
+                </a>
+                <a href="orders.html" class="nav-item">
+                    <i class="fas fa-clipboard-list"></i>
+                    <span>Orders</span>
+                </a>
+                <a href="menu.html" class="nav-item active">
+                    <i class="fas fa-utensils"></i>
+                    <span>Menu</span>
+                </a>
+                <a href="delivery.html" class="nav-item">
+                    <i class="fas fa-truck"></i>
+                    <span>Delivery</span>
+                </a>
+                <a href="analytics.html" class="nav-item">
+                    <i class="fas fa-chart-bar"></i>
+                    <span>Analytics</span>
+                </a>
+                <a href="profile.html" class="nav-item">
+                    <i class="fas fa-user"></i>
+                    <span>Profile</span>
+                </a>
+            </nav>
+            
+            <div class="sidebar-footer">
+                <a href="../auth.html" class="logout-btn">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Logout</span>
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="provider-main">
+            <!-- Header -->
+            <header class="provider-header">
+                <div class="header-left">
+                    <h1>Menu Management</h1>
+                    <p>Manage your menu items and meal plans</p>
+                </div>
+                <div class="header-right">
+                    <button class="btn btn-primary" id="add-menu-btn">
+                        <i class="fas fa-plus"></i>
+                        Add Menu Item
+                    </button>
+                </div>
+            </header>
+
+            <!-- Menu Management Content -->
+            <section class="menu-content">
+                <!-- Add Menu Form -->
+                <div class="dashboard-card add-menu-card" id="add-menu-card" style="display: none;">
+                    <div class="card-header">
+                        <h3><i class="fas fa-plus"></i> Add New Menu Item</h3>
+                        <button class="close-btn" id="close-form-btn">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                    <form class="add-menu-form" id="add-menu-form">
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="dish-name">Dish Name *</label>
+                                <input type="text" id="dish-name" name="dishName" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="category">Category *</label>
+                                <select id="category" name="category" required>
+                                    <option value="">Select Category</option>
+                                    <option value="breakfast">Breakfast</option>
+                                    <option value="lunch">Lunch</option>
+                                    <option value="dinner">Dinner</option>
+                                    <option value="snacks">Snacks</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="cuisine">Cuisine *</label>
+                                <select id="cuisine" name="cuisine" required>
+                                    <option value="">Select Cuisine</option>
+                                    <option value="north-indian">North Indian</option>
+                                    <option value="south-indian">South Indian</option>
+                                    <option value="gujarati">Gujarati</option>
+                                    <option value="punjabi">Punjabi</option>
+                                    <option value="bengali">Bengali</option>
+                                    <option value="maharashtrian">Maharashtrian</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="price">Price (₹) *</label>
+                                <input type="number" id="price" name="price" min="1" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="diet-type">Diet Type *</label>
+                                <select id="diet-type" name="dietType" required>
+                                    <option value="">Select Diet Type</option>
+                                    <option value="vegetarian">Vegetarian</option>
+                                    <option value="non-vegetarian">Non-Vegetarian</option>
+                                    <option value="vegan">Vegan</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="capacity">Daily Capacity *</label>
+                                <input type="number" id="capacity" name="capacity" min="1" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group full-width">
+                            <label for="description">Description</label>
+                            <textarea id="description" name="description" rows="3" placeholder="Brief description of the dish..."></textarea>
+                        </div>
+                        
+                        <div class="form-actions">
+                            <button type="button" class="btn btn-secondary" id="cancel-btn">Cancel</button>
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-save"></i>
+                                Save Menu Item
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Meal Plans Section -->
+                <div class="dashboard-card meal-plans-card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-calendar-alt"></i> Meal Plans</h3>
+                        <div class="plan-toggle">
+                            <label class="toggle-switch">
+                                <input type="checkbox" id="plans-enabled" checked>
+                                <span class="slider"></span>
+                            </label>
+                            <span>Enable Meal Plans</span>
+                        </div>
+                    </div>
+                    <div class="meal-plans-grid">
+                        <div class="plan-card">
+                            <h4>Daily Plan</h4>
+                            <div class="plan-inputs">
+                                <div class="form-group">
+                                    <label class="form-label">Lunch Rate (₹)</label>
+                                    <div class="input-wrapper">
+                                        <i class="input-icon fas fa-rupee-sign"></i>
+                                        <input type="number" class="form-input" id="daily-lunch" value="120" min="1">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Dinner Rate (₹)</label>
+                                    <div class="input-wrapper">
+                                        <i class="input-icon fas fa-rupee-sign"></i>
+                                        <input type="number" class="form-input" id="daily-dinner" value="150" min="1">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="plan-card">
+                            <h4>Weekly Plan</h4>
+                            <div class="plan-inputs">
+                                <div class="form-group">
+                                    <label class="form-label">Lunch Rate (₹)</label>
+                                    <div class="input-wrapper">
+                                        <i class="input-icon fas fa-rupee-sign"></i>
+                                        <input type="number" class="form-input" id="weekly-lunch" value="800" min="1">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Dinner Rate (₹)</label>
+                                    <div class="input-wrapper">
+                                        <i class="input-icon fas fa-rupee-sign"></i>
+                                        <input type="number" class="form-input" id="weekly-dinner" value="1000" min="1">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="plan-card">
+                            <h4>Monthly Plan</h4>
+                            <div class="plan-inputs">
+                                <div class="form-group">
+                                    <label class="form-label">Lunch Rate (₹)</label>
+                                    <div class="input-wrapper">
+                                        <i class="input-icon fas fa-rupee-sign"></i>
+                                        <input type="number" class="form-input" id="monthly-lunch" value="3200" min="1">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Dinner Rate (₹)</label>
+                                    <div class="input-wrapper">
+                                        <i class="input-icon fas fa-rupee-sign"></i>
+                                        <input type="number" class="form-input" id="monthly-dinner" value="4000" min="1">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="plan-actions">
+                        <button class="btn btn-primary" id="save-plans-btn">
+                            <i class="fas fa-save"></i>
+                            Save Meal Plans
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Menu List -->
+                <div class="dashboard-card menu-list-card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-list"></i> Menu Items</h3>
+                        <div class="menu-controls">
+                            <div class="search-container">
+                                <div class="search-input-wrapper">
+                                    <i class="search-icon fas fa-search"></i>
+                                    <input type="text" class="search-input" id="menu-search" placeholder="Search menu items...">
+                                    <button class="clear-search" id="clear-menu-search">
+                                        <i class="fas fa-times"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="select-wrapper">
+                                <label class="select-label">Category</label>
+                                <div class="custom-select" id="category-filter-select">
+                                    <div class="select-display">
+                                        <span class="select-text">All Categories</span>
+                                        <i class="select-arrow fas fa-chevron-down"></i>
+                                    </div>
+                                    <div class="select-dropdown">
+                                        <div class="select-option" data-value="">
+                                            <span>All Categories</span>
+                                        </div>
+                                        <div class="select-option" data-value="breakfast">
+                                            <span>Breakfast</span>
+                                        </div>
+                                        <div class="select-option" data-value="lunch">
+                                            <span>Lunch</span>
+                                        </div>
+                                        <div class="select-option" data-value="dinner">
+                                            <span>Dinner</span>
+                                        </div>
+                                        <div class="select-option" data-value="snacks">
+                                            <span>Snacks</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="menu-table-container">
+                        <table class="menu-table">
+                            <thead>
+                                <tr>
+                                    <th>Dish Name</th>
+                                    <th>Category</th>
+                                    <th>Cuisine</th>
+                                    <th>Price</th>
+                                    <th>Diet Type</th>
+                                    <th>Capacity</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="menu-items-tbody">
+                                <!-- Menu items will be populated by JS -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Edit Menu Modal -->
+    <div class="modal" id="edit-menu-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Edit Menu Item</h3>
+                <button class="close-btn" id="close-edit-modal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <form class="edit-menu-form" id="edit-menu-form">
+                <input type="hidden" id="edit-item-id">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="edit-dish-name">Dish Name *</label>
+                        <input type="text" id="edit-dish-name" name="dishName" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="edit-category">Category *</label>
+                        <select id="edit-category" name="category" required>
+                            <option value="breakfast">Breakfast</option>
+                            <option value="lunch">Lunch</option>
+                            <option value="dinner">Dinner</option>
+                            <option value="snacks">Snacks</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="edit-cuisine">Cuisine *</label>
+                        <select id="edit-cuisine" name="cuisine" required>
+                            <option value="north-indian">North Indian</option>
+                            <option value="south-indian">South Indian</option>
+                            <option value="gujarati">Gujarati</option>
+                            <option value="punjabi">Punjabi</option>
+                            <option value="bengali">Bengali</option>
+                            <option value="maharashtrian">Maharashtrian</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="edit-price">Price (₹) *</label>
+                        <input type="number" id="edit-price" name="price" min="1" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="edit-diet-type">Diet Type *</label>
+                        <select id="edit-diet-type" name="dietType" required>
+                            <option value="vegetarian">Vegetarian</option>
+                            <option value="non-vegetarian">Non-Vegetarian</option>
+                            <option value="vegan">Vegan</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="edit-capacity">Daily Capacity *</label>
+                        <input type="number" id="edit-capacity" name="capacity" min="1" required>
+                    </div>
+                </div>
+                
+                <div class="form-group full-width">
+                    <label for="edit-description">Description</label>
+                    <textarea id="edit-description" name="description" rows="3"></textarea>
+                </div>
+                
+                <div class="form-actions">
+                    <button type="button" class="btn btn-secondary" id="cancel-edit-btn">Cancel</button>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-save"></i>
+                        Update Menu Item
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="../assets/js/provider.js"></script>
+</body>
+</html>
+

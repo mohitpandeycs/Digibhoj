@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DigiBhoj - Review & Feedback</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/customer.css">
+    <link rel="stylesheet" href="../assets/css/responsive.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <!-- Customer Navbar -->
+    <header class="customer-header">
+        <div class="container">
+            <div class="customer-nav">
+                <div class="logo">
+                    <a href="home.html">DigiBhoj</a>
+                </div>
+                
+                <!-- Search Bar -->
+                <div class="search-container">
+                    <div class="search-bar">
+                        <input type="text" id="search-input" placeholder="Search for providers, cuisines..." autocomplete="off">
+                        <button id="search-btn" aria-label="Search" title="Search providers">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Right Icons -->
+                <div class="nav-icons">
+                    <button class="nav-icon" id="cart-btn" aria-label="View Cart" title="View Cart">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count" id="cart-count">0</span>
+                    </button>
+                    <button class="nav-icon" id="profile-btn" aria-label="Profile" title="Profile">
+                        <i class="fas fa-user"></i>
+                    </button>
+                    <button class="nav-icon" id="logout-btn" aria-label="Logout" title="Logout">
+                        <i class="fas fa-sign-out-alt"></i>
+                    </button>
+                    <button id="theme-toggle" class="btn btn-theme-toggle" aria-label="Toggle theme" title="Toggle light/dark theme">
+                        <i class="fas fa-cog"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="review-main">
+        <div class="container">
+            <!-- Back Navigation -->
+            <div class="back-navigation">
+                <a href="provider.html" class="back-link">
+                    <i class="fas fa-arrow-left"></i>
+                    Back to Provider
+                </a>
+            </div>
+
+            <!-- Provider Info -->
+            <section class="provider-review-info">
+                <div class="provider-card">
+                    <div class="provider-image">
+                        <img id="provider-image" src="../assets/images/mess-placeholder.jpg" alt="Provider Image">
+                    </div>
+                    <div class="provider-details">
+                        <h2 id="provider-name">Provider Name</h2>
+                        <div class="provider-rating">
+                            <div class="stars" id="current-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                            </div>
+                            <span class="rating-text" id="current-rating-text">4.2 (128 reviews)</span>
+                        </div>
+                        <p class="provider-description" id="provider-description">
+                            Fresh, home-style cooking with authentic flavors.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Review Form -->
+            <section class="review-form-section">
+                <div class="review-form-container">
+                    <h3>Share Your Experience</h3>
+                    <p>Help other customers by sharing your honest feedback</p>
+                    
+                    <form id="review-form">
+                        <!-- Rating Section -->
+                        <div class="rating-section">
+                            <label class="form-label">Overall Rating</label>
+                            <div class="star-rating" id="star-rating">
+                                <input type="radio" id="star5" name="rating" value="5">
+                                <label for="star5" class="star-label">
+                                    <i class="fas fa-star"></i>
+                                </label>
+                                <input type="radio" id="star4" name="rating" value="4">
+                                <label for="star4" class="star-label">
+                                    <i class="fas fa-star"></i>
+                                </label>
+                                <input type="radio" id="star3" name="rating" value="3">
+                                <label for="star3" class="star-label">
+                                    <i class="fas fa-star"></i>
+                                </label>
+                                <input type="radio" id="star2" name="rating" value="2">
+                                <label for="star2" class="star-label">
+                                    <i class="fas fa-star"></i>
+                                </label>
+                                <input type="radio" id="star1" name="rating" value="1">
+                                <label for="star1" class="star-label">
+                                    <i class="fas fa-star"></i>
+                                </label>
+                            </div>
+                            <div class="rating-text" id="rating-description">Select a rating</div>
+                        </div>
+
+                        <!-- Detailed Ratings -->
+                        <div class="detailed-ratings">
+                            <h4>Rate Specific Aspects</h4>
+                            
+                            <div class="rating-item">
+                                <label>Food Quality</label>
+                                <div class="rating-stars" data-category="food-quality">
+                                    <i class="fas fa-star" data-rating="1"></i>
+                                    <i class="fas fa-star" data-rating="2"></i>
+                                    <i class="fas fa-star" data-rating="3"></i>
+                                    <i class="fas fa-star" data-rating="4"></i>
+                                    <i class="fas fa-star" data-rating="5"></i>
+                                </div>
+                            </div>
+                            
+                            <div class="rating-item">
+                                <label>Delivery Time</label>
+                                <div class="rating-stars" data-category="delivery-time">
+                                    <i class="fas fa-star" data-rating="1"></i>
+                                    <i class="fas fa-star" data-rating="2"></i>
+                                    <i class="fas fa-star" data-rating="3"></i>
+                                    <i class="fas fa-star" data-rating="4"></i>
+                                    <i class="fas fa-star" data-rating="5"></i>
+                                </div>
+                            </div>
+                            
+                            <div class="rating-item">
+                                <label>Packaging</label>
+                                <div class="rating-stars" data-category="packaging">
+                                    <i class="fas fa-star" data-rating="1"></i>
+                                    <i class="fas fa-star" data-rating="2"></i>
+                                    <i class="fas fa-star" data-rating="3"></i>
+                                    <i class="fas fa-star" data-rating="4"></i>
+                                    <i class="fas fa-star" data-rating="5"></i>
+                                </div>
+                            </div>
+                            
+                            <div class="rating-item">
+                                <label>Value for Money</label>
+                                <div class="rating-stars" data-category="value">
+                                    <i class="fas fa-star" data-rating="1"></i>
+                                    <i class="fas fa-star" data-rating="2"></i>
+                                    <i class="fas fa-star" data-rating="3"></i>
+                                    <i class="fas fa-star" data-rating="4"></i>
+                                    <i class="fas fa-star" data-rating="5"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Review Text -->
+                        <div class="form-group">
+                            <label for="review-text" class="form-label">Write Your Review</label>
+                            <textarea id="review-text" placeholder="Tell us about your experience with this provider..." rows="5"></textarea>
+                            <div class="char-count">
+                                <span id="char-count">0</span>/500 characters
+                            </div>
+                        </div>
+
+                        <!-- Photo Upload -->
+                        <div class="form-group">
+                            <label for="review-photos" class="form-label">Add Photos (Optional)</label>
+                            <div class="photo-upload">
+                                <input type="file" id="review-photos" multiple accept="image/*" style="display: none;">
+                                <button type="button" class="btn btn-secondary" id="upload-photos">
+                                    <i class="fas fa-camera"></i>
+                                    Upload Photos
+                                </button>
+                                <div class="photo-preview" id="photo-preview">
+                                    <!-- Uploaded photos will appear here -->
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Order Reference -->
+                        <div class="form-group">
+                            <label for="order-reference" class="form-label">Order Reference (Optional)</label>
+                            <select id="order-reference">
+                                <option value="">Select an order</option>
+                                <option value="order-1">Order #DB12345 - 2024-01-15</option>
+                                <option value="order-2">Order #DB12346 - 2024-01-14</option>
+                                <option value="order-3">Order #DB12347 - 2024-01-13</option>
+                            </select>
+                        </div>
+
+                        <!-- Anonymous Review -->
+                        <div class="form-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="anonymous-review">
+                                <span class="checkmark"></span>
+                                Submit as anonymous review
+                            </label>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <div class="form-actions">
+                            <button type="button" class="btn btn-secondary" id="save-draft">
+                                <i class="fas fa-save"></i>
+                                Save as Draft
+                            </button>
+                            <button type="submit" class="btn btn-primary" id="submit-review">
+                                <i class="fas fa-paper-plane"></i>
+                                Submit Review
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </section>
+
+            <!-- Recent Reviews -->
+            <section class="recent-reviews">
+                <h3>Recent Reviews</h3>
+                <div class="reviews-list" id="recent-reviews-list">
+                    <!-- Recent reviews will be loaded here -->
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Review Success Modal -->
+    <div class="modal" id="review-success-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Review Submitted!</h3>
+            </div>
+            <div class="modal-body">
+                <div class="success-message">
+                    <i class="fas fa-check-circle"></i>
+                    <h4>Thank you for your feedback!</h4>
+                    <p>Your review has been submitted and will be visible to other customers.</p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" id="view-provider">View Provider</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>DigiBhoj</h3>
+                    <p>Your trusted partner for delicious tiffin services</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="home.html">Home</a></li>
+                        <li><a href="profile.html">Profile</a></li>
+                        <li><a href="cart.html">Cart</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 DigiBhoj. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/customer.js"></script>
+</body>
+</html>

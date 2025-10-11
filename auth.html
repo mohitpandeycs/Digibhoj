@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DigiBhoj - Authentication</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/auth.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header class="auth-header">
+        <div class="container">
+            <div class="auth-header-content">
+                <div class="logo">
+                    <a href="index.html">DigiBhoj</a>
+                </div>
+                <button id="theme-toggle" class="btn btn-theme-toggle" aria-label="Toggle theme" title="Toggle light/dark theme">
+                    <i class="fas fa-cog"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="auth-main">
+        <div class="container">
+            <div class="auth-container">
+                <!-- Back to Home Link -->
+                <div class="back-to-home">
+                    <a href="index.html" class="back-link" title="Return to homepage">
+                        <i class="fas fa-arrow-left" aria-hidden="true"></i> Back to Home
+                    </a>
+                </div>
+
+                <!-- Role Switcher -->
+                <div class="role-switcher">
+                    <h2>Choose Your Role</h2>
+                    <div class="role-tabs" role="tablist" aria-label="User role selection">
+                        <button class="role-tab active" data-role="customer" role="tab" aria-selected="true" aria-controls="customer-fields" aria-label="Select Customer role" title="Choose Customer role">
+                            <i class="fas fa-utensils" aria-hidden="true"></i>
+                            <span>Customer</span>
+                        </button>
+                        <button class="role-tab" data-role="provider" role="tab" aria-selected="false" aria-controls="provider-fields" aria-label="Select Provider role" title="Choose Provider role">
+                            <i class="fas fa-store" aria-hidden="true"></i>
+                            <span>Provider</span>
+                        </button>
+                        <button class="role-tab" data-role="delivery" role="tab" aria-selected="false" aria-controls="delivery-fields" aria-label="Select Delivery Boy role" title="Choose Delivery Boy role">
+                            <i class="fas fa-truck" aria-hidden="true"></i>
+                            <span>Delivery Boy</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Auth Forms Container -->
+                <div class="auth-forms-container">
+                    <!-- Login/Register Toggle -->
+                    <div class="auth-toggle">
+                        <button class="auth-tab active" data-form="login" aria-label="Switch to login form" title="Login to your account">Login</button>
+                        <button class="auth-tab" data-form="register" aria-label="Switch to registration form" title="Create a new account">Register</button>
+                    </div>
+
+                    <!-- Login Form -->
+                    <form id="loginForm" class="auth-form active">
+                        <h3>Login to Your Account</h3>
+                        
+                        <div class="form-group">
+                            <label for="loginEmail">Email / Phone</label>
+                            <input type="text" id="loginEmail" name="email" autocomplete="email" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="loginPassword">Password</label>
+                            <input type="password" id="loginPassword" name="password" autocomplete="current-password" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="loginRole">Role</label>
+                            <select id="loginRole" name="role" required>
+                                <option value="customer">Customer</option>
+                                <option value="provider">Provider</option>
+                                <option value="delivery">Delivery Boy</option>
+                            </select>
+                        </div>
+
+                        <div class="form-options">
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="remember">
+                                <span class="checkmark"></span>
+                                Remember me
+                            </label>
+                            <a href="#" class="forgot-password">Forgot Password?</a>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-full">Login</button>
+
+                        <div class="social-login">
+                            <p>Or login with</p>
+                            <div class="social-buttons">
+                                <button type="button" class="btn btn-social btn-google" aria-label="Login with Google" title="Sign in with Google account">
+                                    <i class="fab fa-google" aria-hidden="true"></i> Google
+                                </button>
+                                <button type="button" class="btn btn-social btn-facebook" aria-label="Login with Facebook" title="Sign in with Facebook account">
+                                    <i class="fab fa-facebook-f" aria-hidden="true"></i> Facebook
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+
+                    <!-- Register Form -->
+                    <form id="registerForm" class="auth-form">
+                        <h3>Create Your Account</h3>
+
+                        <!-- Customer Registration Fields -->
+                        <div class="role-fields" data-role="customer" id="customer-fields" role="tabpanel" aria-labelledby="customer-tab">
+                            <div class="form-group">
+                                <label for="customerName">Full Name</label>
+                                <input type="text" id="customerName" name="name" autocomplete="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="customerEmail">Email</label>
+                                <input type="email" id="customerEmail" name="email" autocomplete="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="customerPassword">Password</label>
+                                <input type="password" id="customerPassword" name="password" autocomplete="new-password" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="customerConfirmPassword">Confirm Password</label>
+                                <input type="password" id="customerConfirmPassword" name="confirmPassword" autocomplete="new-password" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="customerAddress">Address</label>
+                                <textarea id="customerAddress" name="address" rows="3" autocomplete="street-address" required></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="customerDietary">Dietary Preferences</label>
+                                <select id="customerDietary" name="dietary">
+                                    <option value="vegetarian">Vegetarian</option>
+                                    <option value="non-vegetarian">Non-Vegetarian</option>
+                                    <option value="vegan">Vegan</option>
+                                    <option value="no-preference">No Preference</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Provider Registration Fields -->
+                        <div class="role-fields" data-role="provider" id="provider-fields" role="tabpanel" aria-labelledby="provider-tab">
+                            <div class="form-group">
+                                <label for="providerMessName">Mess/Shop Name</label>
+                                <input type="text" id="providerMessName" name="messName" autocomplete="organization" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="providerOwnerName">Owner Name</label>
+                                <input type="text" id="providerOwnerName" name="ownerName" autocomplete="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="providerEmail">Email</label>
+                                <input type="email" id="providerEmail" name="email" autocomplete="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="providerPassword">Password</label>
+                                <input type="password" id="providerPassword" name="password" autocomplete="new-password" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="providerAddress">Address</label>
+                                <textarea id="providerAddress" name="address" rows="3" autocomplete="street-address" required></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="hygieneCertificate">Hygiene Certificate</label>
+                                <input type="file" id="hygieneCertificate" name="hygieneCertificate" accept=".pdf,.jpg,.png" required>
+                                <small>Upload PDF, JPG, or PNG file</small>
+                            </div>
+                        </div>
+
+                        <!-- Delivery Boy Registration Fields -->
+                        <div class="role-fields" data-role="delivery" id="delivery-fields" role="tabpanel" aria-labelledby="delivery-tab">
+                            <div class="form-group">
+                                <label for="deliveryName">Full Name</label>
+                                <input type="text" id="deliveryName" name="name" autocomplete="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="deliveryEmail">Email</label>
+                                <input type="email" id="deliveryEmail" name="email" autocomplete="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="deliveryPassword">Password</label>
+                                <input type="password" id="deliveryPassword" name="password" autocomplete="new-password" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="deliveryPhone">Phone Number</label>
+                                <input type="tel" id="deliveryPhone" name="phone" autocomplete="tel" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="vehicleNumber">Vehicle Number</label>
+                                <input type="text" id="vehicleNumber" name="vehicleNumber" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="licenseUpload">License Upload</label>
+                                <input type="file" id="licenseUpload" name="license" accept=".pdf,.jpg,.png" required>
+                                <small>Upload PDF, JPG, or PNG file</small>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="terms" required>
+                                <span class="checkmark"></span>
+                                I agree to the <a href="#" class="terms-link">Terms & Conditions</a>
+                            </label>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-full">Create Account</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-links">
+                <a href="#">About</a>
+                <a href="#">Privacy</a>
+                <a href="#">Contact</a>
+            </div>
+            <p class="footer-description">DigiBhoj: Connecting you with fresh, home-style meals.</p>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+            <p class="copyright">&copy; 2025 DigiBhoj. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/auth.js"></script>
+</body>
+</html>

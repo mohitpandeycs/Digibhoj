@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delivery Map - DigiBhoj</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/delivery.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDTtw3Thr6vSXJivMdcE6uxBOOnF_JtUsw&libraries=geometry,places,directions&callback=initMap"></script>
+</head>
+<body>
+    <div class="delivery-container">
+        <!-- Header/Navbar -->
+        <header class="delivery-header">
+            <div class="header-left">
+                <div class="logo">
+                    <span class="logo-digi">Digi</span><span class="logo-bhoj">Bhoj</span>
+                </div>
+                <div class="delivery-boy-info">
+                    <img src="../assets/images/hero-bg.jpg" alt="Delivery Boy" class="delivery-boy-avatar">
+                    <div class="delivery-boy-details">
+                        <span class="delivery-boy-name" id="delivery-boy-name">Rahul Kumar</span>
+                        <span class="delivery-boy-status online" id="delivery-boy-status">Online</span>
+                    </div>
+                </div>
+            </div>
+            
+            <nav class="delivery-nav">
+                <a href="dashboard.html" class="nav-item">
+                    <i class="fas fa-tachometer-alt"></i>
+                    <span>Dashboard</span>
+                </a>
+                <a href="map.html" class="nav-item active">
+                    <i class="fas fa-map-marked-alt"></i>
+                    <span>Map</span>
+                </a>
+                <a href="earnings.html" class="nav-item">
+                    <i class="fas fa-wallet"></i>
+                    <span>Earnings</span>
+                </a>
+                <a href="profile.html" class="nav-item">
+                    <i class="fas fa-user"></i>
+                    <span>Profile</span>
+                </a>
+            </nav>
+            
+            <div class="header-right">
+                <div class="theme-toggle">
+                    <button class="theme-btn" id="theme-toggle">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                </div>
+                <div class="notification-center">
+                    <button class="notification-btn" id="notification-btn">
+                        <i class="fas fa-bell"></i>
+                        <span class="notification-badge" id="notification-count">2</span>
+                    </button>
+                </div>
+                <a href="../auth.html" class="logout-btn">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Logout</span>
+                </a>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="delivery-main map-main">
+            <!-- Order Selector -->
+            <section class="order-selector">
+                <div class="selector-header">
+                    <h2>
+                        <i class="fas fa-route"></i>
+                        Route Navigation
+                    </h2>
+                    <div class="selector-controls">
+                        <div class="select-wrapper">
+                            <label class="select-label">Current Delivery</label>
+                            <div class="custom-select" id="current-delivery-select">
+                                <div class="select-display">
+                                    <span class="select-text">Select ongoing delivery</span>
+                                    <i class="select-arrow fas fa-chevron-down"></i>
+                                </div>
+                                <div class="select-dropdown">
+                                    <div class="select-option" data-value="DB001">
+                                        <span>#DB001 - Rajesh Kitchen → Priya Sharma</span>
+                                    </div>
+                                    <div class="select-option" data-value="DB002">
+                                        <span>#DB002 - Mumbai Meals → Amit Patel</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="refresh-location-btn" id="refresh-location">
+                            <i class="fas fa-crosshairs"></i>
+                            My Location
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <div class="map-layout">
+                <!-- Interactive Map Panel -->
+                <section class="map-panel">
+                    <div class="map-container" id="map-container">
+                        <!-- Google Maps will be loaded here -->
+                        <div id="map" style="width: 100%; height: 100%; border-radius: 16px;"></div>
+                        
+                        <!-- Map Controls Overlay -->
+                        <div class="map-controls">
+                            <button class="map-control-btn" id="center-location" title="Center on my location">
+                                <i class="fas fa-crosshairs"></i>
+                            </button>
+                            <button class="map-control-btn" id="toggle-traffic" title="Toggle traffic">
+                                <i class="fas fa-road"></i>
+                            </button>
+                            <button class="map-control-btn" id="fullscreen-map" title="Fullscreen">
+                                <i class="fas fa-expand"></i>
+                            </button>
+                        </div>
+                        
+                        <!-- Loading Overlay -->
+                        <div class="map-loading" id="map-loading">
+                            <div class="loading-spinner"></div>
+                            <p>Loading map...</p>
+                        </div>
+                        
+                        <!-- Navigation Instructions -->
+                        <div class="navigation-instructions">
+                            <div class="instruction-header">
+                                <i class="fas fa-directions"></i>
+                                <span>Turn-by-Turn Directions</span>
+                            </div>
+                            <div class="instructions-list">
+                                <div class="instruction-item current">
+                                    <div class="instruction-icon">
+                                        <i class="fas fa-arrow-right"></i>
+                                    </div>
+                                    <div class="instruction-text">
+                                        <span class="instruction-action">Head east on Main Street</span>
+                                        <span class="instruction-distance">500m</span>
+                                    </div>
+                                </div>
+                                <div class="instruction-item">
+                                    <div class="instruction-icon">
+                                        <i class="fas fa-arrow-left"></i>
+                                    </div>
+                                    <div class="instruction-text">
+                                        <span class="instruction-action">Turn left onto SV Road</span>
+                                        <span class="instruction-distance">1.2km</span>
+                                    </div>
+                                </div>
+                                <div class="instruction-item">
+                                    <div class="instruction-icon">
+                                        <i class="fas fa-flag-checkered"></i>
+                                    </div>
+                                    <div class="instruction-text">
+                                        <span class="instruction-action">Arrive at destination</span>
+                                        <span class="instruction-distance">800m</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Order Info Box -->
+                <aside class="order-info-panel">
+                    <div class="order-info-card" id="current-order-info">
+                        <div class="order-header">
+                            <div class="order-id-section">
+                                <span class="order-id">#DB001</span>
+                                <div class="order-status ongoing">
+                                    <i class="fas fa-truck"></i>
+                                    Ongoing
+                                </div>
+                            </div>
+                            <div class="order-timer">
+                                <i class="fas fa-clock"></i>
+                                <span id="delivery-timer">15:30</span>
+                            </div>
+                        </div>
+                        
+                        <div class="route-summary">
+                            <div class="route-info">
+                                <span class="route-distance">
+                                    <i class="fas fa-route"></i>
+                                    2.5 km
+                                </span>
+                                <span class="route-time">
+                                    <i class="fas fa-clock"></i>
+                                    15 mins
+                                </span>
+                                <span class="route-earnings">
+                                    <i class="fas fa-rupee-sign"></i>
+                                    ₹50
+                                </span>
+                            </div>
+                        </div>
+                        
+                        <div class="pickup-details">
+                            <h4>
+                                <i class="fas fa-store"></i>
+                                Pickup Location
+                            </h4>
+                            <div class="location-info">
+                                <p class="location-name">Rajesh Kitchen</p>
+                                <p class="location-address">Shop No. 5, Main Street, Andheri West</p>
+                                <div class="location-actions">
+                                    <button class="contact-btn" onclick="callProvider()">
+                                        <i class="fas fa-phone"></i>
+                                        Call Provider
+                                    </button>
+                                    <button class="navigate-btn" onclick="navigateToPickup()">
+                                        <i class="fas fa-directions"></i>
+                                        Navigate
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="delivery-details">
+                            <h4>
+                                <i class="fas fa-home"></i>
+                                Delivery Location
+                            </h4>
+                            <div class="location-info">
+                                <p class="location-name">Priya Sharma</p>
+                                <p class="location-address">Flat 201, Building A, Lokhandwala Complex</p>
+                                <div class="location-actions">
+                                    <button class="contact-btn" onclick="callCustomer()">
+                                        <i class="fas fa-phone"></i>
+                                        Call Customer
+                                    </button>
+                                    <button class="navigate-btn" onclick="navigateToDelivery()">
+                                        <i class="fas fa-directions"></i>
+                                        Navigate
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="delivery-actions">
+                            <button class="action-btn dispatched-btn" id="mark-dispatched" onclick="markDispatched()">
+                                <i class="fas fa-shipping-fast"></i>
+                                Mark as Dispatched
+                            </button>
+                            <button class="action-btn delivered-btn" id="mark-delivered" onclick="markDelivered()" style="display: none;">
+                                <i class="fas fa-check-circle"></i>
+                                Mark as Delivered
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Quick Stats -->
+                    <div class="quick-stats">
+                        <div class="stat-item">
+                            <i class="fas fa-route"></i>
+                            <span class="stat-label">Distance</span>
+                            <span class="stat-value" id="route-distance">2.5 km</span>
+                        </div>
+                        <div class="stat-item">
+                            <i class="fas fa-clock"></i>
+                            <span class="stat-label">ETA</span>
+                            <span class="stat-value" id="route-eta">15 mins</span>
+                        </div>
+                        <div class="stat-item">
+                            <i class="fas fa-tachometer-alt"></i>
+                            <span class="stat-label">Speed</span>
+                            <span class="stat-value" id="current-speed">25 km/h</span>
+                        </div>
+                        <div class="stat-item">
+                            <i class="fas fa-battery-three-quarters"></i>
+                            <span class="stat-label">Battery</span>
+                            <span class="stat-value" id="device-battery">78%</span>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </main>
+    </div>
+
+    <!-- Delivery Confirmation Modal -->
+    <div class="modal" id="delivery-confirmation-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Confirm Delivery</h3>
+                <button class="close-btn" id="close-delivery-modal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="confirmation-details">
+                    <div class="order-summary">
+                        <h4>Order Summary</h4>
+                        <p><strong>Order ID:</strong> #DB001</p>
+                        <p><strong>Customer:</strong> Priya Sharma</p>
+                        <p><strong>Amount:</strong> ₹250</p>
+                        <p><strong>Items:</strong> 2 items</p>
+                    </div>
+                    
+                    <div class="delivery-verification">
+                        <h4>Delivery Verification</h4>
+                        <div class="form-group">
+                            <label for="delivery-otp">Customer OTP (if provided)</label>
+                            <input type="text" id="delivery-otp" placeholder="Enter 4-digit OTP">
+                        </div>
+                        <div class="form-group">
+                            <label for="delivery-notes">Delivery Notes</label>
+                            <textarea id="delivery-notes" rows="3" placeholder="Any additional notes about the delivery..."></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" id="cancel-delivery">Cancel</button>
+                <button class="btn btn-success" id="confirm-delivery">
+                    <i class="fas fa-check-circle"></i>
+                    Confirm Delivery
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../assets/js/delivery.js"></script>
+    <script src="../assets/js/delivery-maps.js"></script>
+</body>
+</html>
+

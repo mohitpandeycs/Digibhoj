@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DigiBhoj - Profile & Orders</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/customer.css">
+    <link rel="stylesheet" href="../assets/css/responsive.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <!-- Customer Navbar -->
+    <header class="customer-header">
+        <div class="container">
+            <div class="customer-nav">
+                <div class="logo">
+                    <a href="home.html"><span class="logo-digi">Digi</span><span class="logo-bhoj">Bhoj</span></a>
+                </div>
+                
+                <!-- Search Bar -->
+                <div class="search-container">
+                    <div class="search-bar">
+                        <input type="text" id="search-input" placeholder="Search for providers, cuisines..." autocomplete="off">
+                        <button id="search-btn" aria-label="Search" title="Search providers">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Right Icons -->
+                <div class="nav-icons">
+                    <button class="cart-icon" id="cart-btn" aria-label="View Cart" title="View Cart">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count" id="cart-count">0</span>
+                    </button>
+                    <div class="profile-dropdown">
+                        <button class="profile-btn active" id="profile-btn">
+                            <i class="fas fa-user"></i>
+                            <span class="profile-name">Customer</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="dropdown-menu" id="profile-dropdown">
+                            <a href="profile.html" class="dropdown-item active">
+                                <i class="fas fa-user"></i>
+                                Profile
+                            </a>
+                            <a href="profile.html#orders" class="dropdown-item">
+                                <i class="fas fa-box"></i>
+                                Orders
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a href="../auth.html" class="dropdown-item logout">
+                                <i class="fas fa-sign-out-alt"></i>
+                                Logout
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="profile-main">
+        <div class="container">
+            <div class="profile-layout">
+                <!-- Profile Sidebar -->
+                <aside class="profile-sidebar">
+                    <div class="profile-card">
+                        <div class="profile-avatar">
+                            <img id="profile-avatar" src="../assets/images/avatar-placeholder.jpg" alt="Profile Avatar">
+                        </div>
+                        <h3 id="profile-name">John Doe</h3>
+                        <p id="profile-email">john.doe@example.com</p>
+                        <div class="profile-stats">
+                            <div class="stat">
+                                <span class="stat-number" id="total-orders">12</span>
+                                <span class="stat-label">Total Orders</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number" id="member-since">6</span>
+                                <span class="stat-label">Months</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Navigation Tabs -->
+                    <nav class="profile-nav">
+                        <button class="profile-nav-btn active" data-tab="profile">
+                            <i class="fas fa-user"></i>
+                            Profile
+                        </button>
+                        <button class="profile-nav-btn" data-tab="orders">
+                            <i class="fas fa-shopping-bag"></i>
+                            Orders
+                        </button>
+                        <button class="profile-nav-btn" data-tab="subscriptions">
+                            <i class="fas fa-calendar-alt"></i>
+                            Subscriptions
+                        </button>
+                        <button class="profile-nav-btn" data-tab="addresses">
+                            <i class="fas fa-map-marker-alt"></i>
+                            Addresses
+                        </button>
+                        <button class="profile-nav-btn" data-tab="settings">
+                            <i class="fas fa-cog"></i>
+                            Settings
+                        </button>
+                    </nav>
+                </aside>
+
+                <!-- Profile Content -->
+                <div class="profile-content">
+                    <!-- Profile Tab -->
+                    <div class="profile-tab active" id="profile-tab">
+                        <div class="tab-header">
+                            <h2>Personal Information</h2>
+                            <button class="btn btn-primary" id="edit-profile">
+                                <i class="fas fa-edit"></i>
+                                Edit Profile
+                            </button>
+                        </div>
+                        
+                        <div class="profile-form" id="profile-form">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="first-name">First Name</label>
+                                    <input type="text" id="first-name" value="John" readonly>
+                                </div>
+                                <div class="form-group">
+                                    <label for="last-name">Last Name</label>
+                                    <input type="text" id="last-name" value="Doe" readonly>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" value="john.doe@example.com" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Phone Number</label>
+                                <input type="tel" id="phone" value="+91 98765 43210" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label for="date-of-birth">Date of Birth</label>
+                                <input type="date" id="date-of-birth" value="1990-01-01" readonly>
+                            </div>
+                            <div class="form-actions" id="profile-actions" style="display: none;">
+                                <button class="btn btn-secondary" id="cancel-profile">Cancel</button>
+                                <button class="btn btn-primary" id="save-profile">Save Changes</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Orders Tab -->
+                    <div class="profile-tab" id="orders-tab">
+                        <div class="tab-header">
+                            <h2>Order History</h2>
+                            <div class="order-filters">
+                                <select id="order-status-filter">
+                                    <option value="">All Orders</option>
+                                    <option value="pending">Pending</option>
+                                    <option value="preparing">Preparing</option>
+                                    <option value="out-for-delivery">Out for Delivery</option>
+                                    <option value="delivered">Delivered</option>
+                                    <option value="cancelled">Cancelled</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="orders-list" id="orders-list">
+                            <!-- Orders will be dynamically loaded here -->
+                        </div>
+                    </div>
+
+                    <!-- Subscriptions Tab -->
+                    <div class="profile-tab" id="subscriptions-tab">
+                        <div class="tab-header">
+                            <h2>Active Subscriptions</h2>
+                            <button class="btn btn-primary" id="new-subscription">
+                                <i class="fas fa-plus"></i>
+                                New Subscription
+                            </button>
+                        </div>
+                        
+                        <div class="subscriptions-list" id="subscriptions-list">
+                            <!-- Subscriptions will be dynamically loaded here -->
+                        </div>
+                    </div>
+
+                    <!-- Addresses Tab -->
+                    <div class="profile-tab" id="addresses-tab">
+                        <div class="tab-header">
+                            <h2>Saved Addresses</h2>
+                            <button class="btn btn-primary" id="add-address">
+                                <i class="fas fa-plus"></i>
+                                Add Address
+                            </button>
+                        </div>
+                        
+                        <div class="addresses-list" id="addresses-list">
+                            <!-- Addresses will be dynamically loaded here -->
+                        </div>
+                    </div>
+
+                    <!-- Settings Tab -->
+                    <div class="profile-tab" id="settings-tab">
+                        <div class="tab-header">
+                            <h2>Account Settings</h2>
+                        </div>
+                        
+                        <div class="settings-sections">
+                            <div class="settings-section">
+                                <h3>Password & Security</h3>
+                                <button class="btn btn-secondary" id="change-password">
+                                    <i class="fas fa-key"></i>
+                                    Change Password
+                                </button>
+                            </div>
+                            
+                            <div class="settings-section">
+                                <h3>Notifications</h3>
+                                <div class="notification-settings">
+                                    <label class="setting-item">
+                                        <input type="checkbox" id="email-notifications" checked>
+                                        <span>Email Notifications</span>
+                                    </label>
+                                    <label class="setting-item">
+                                        <input type="checkbox" id="sms-notifications" checked>
+                                        <span>SMS Notifications</span>
+                                    </label>
+                                    <label class="setting-item">
+                                        <input type="checkbox" id="push-notifications" checked>
+                                        <span>Push Notifications</span>
+                                    </label>
+                                </div>
+                            </div>
+                            
+                            <div class="settings-section">
+                                <h3>Privacy</h3>
+                                <div class="privacy-settings">
+                                    <label class="setting-item">
+                                        <input type="checkbox" id="profile-visibility" checked>
+                                        <span>Make profile visible to providers</span>
+                                    </label>
+                                    <label class="setting-item">
+                                        <input type="checkbox" id="order-history" checked>
+                                        <span>Save order history</span>
+                                    </label>
+                                </div>
+                            </div>
+                            
+                            <div class="settings-section danger">
+                                <h3>Danger Zone</h3>
+                                <button class="btn btn-danger" id="delete-account">
+                                    <i class="fas fa-trash"></i>
+                                    Delete Account
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Change Password Modal -->
+    <div class="modal" id="change-password-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Change Password</h3>
+                <button class="modal-close" id="close-password-modal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="password-form">
+                    <div class="form-group">
+                        <label for="current-password">Current Password</label>
+                        <input type="password" id="current-password" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="new-password">New Password</label>
+                        <input type="password" id="new-password" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="confirm-password">Confirm New Password</label>
+                        <input type="password" id="confirm-password" required>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" id="cancel-password">Cancel</button>
+                <button class="btn btn-primary" id="save-password">Change Password</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Enhanced Footer -->
+    <footer class="main-footer">
+        <div class="footer-wave">
+            <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25" class="shape-fill"></path>
+                <path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5" class="shape-fill"></path>
+                <path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" class="shape-fill"></path>
+            </svg>
+        </div>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section brand-section">
+                    <div class="footer-logo">
+                        <span class="logo-digi">Digi</span><span class="logo-bhoj">Bhoj</span>
+                    </div>
+                    <p class="footer-tagline">Your trusted partner for delicious, healthy tiffin services delivered fresh to your doorstep.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link" aria-label="Facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Twitter">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="WhatsApp">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4><i class="fas fa-link"></i> Quick Links</h4>
+                    <ul>
+                        <li><a href="home.html"><i class="fas fa-home"></i> Home</a></li>
+                        <li><a href="provider.html"><i class="fas fa-utensils"></i> Browse Providers</a></li>
+                        <li><a href="profile.html"><i class="fas fa-user"></i> My Profile</a></li>
+                        <li><a href="cart.html"><i class="fas fa-shopping-cart"></i> My Cart</a></li>
+                        <li><a href="checkout.html"><i class="fas fa-receipt"></i> Order Tracking</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4><i class="fas fa-headset"></i> Support</h4>
+                    <ul>
+                        <li><a href="#"><i class="fas fa-question-circle"></i> Help Center</a></li>
+                        <li><a href="#"><i class="fas fa-phone"></i> Contact Us</a></li>
+                        <li><a href="#"><i class="fas fa-shield-alt"></i> Privacy Policy</a></li>
+                        <li><a href="#"><i class="fas fa-file-contract"></i> Terms of Service</a></li>
+                        <li><a href="#"><i class="fas fa-star"></i> Rate Us</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section contact-section">
+                    <h4><i class="fas fa-map-marker-alt"></i> Get In Touch</h4>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <span>+91 98765 43210</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>support@digibhoj.com</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-clock"></i>
+                            <span>24/7 Customer Support</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Mumbai, Maharashtra</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="footer-bottom-content">
+                    <p>&copy; 2024 DigiBhoj. All rights reserved.</p>
+                    <div class="footer-badges">
+                        <span class="badge"><i class="fas fa-shield-check"></i> Secure Payments</span>
+                        <span class="badge"><i class="fas fa-truck"></i> Fast Delivery</span>
+                        <span class="badge"><i class="fas fa-leaf"></i> Fresh Food</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/profile.js"></script>
+</body>
+</html>

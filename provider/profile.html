@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile - DigiBhoj</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/provider.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="provider-container">
+        <!-- Sidebar -->
+        <aside class="provider-sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <span class="logo-digi">Digi</span><span class="logo-bhoj">Bhoj</span>
+                </div>
+                <p class="provider-name">Provider Panel</p>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <a href="dashboard.html" class="nav-item">
+                    <i class="fas fa-tachometer-alt"></i>
+                    <span>Dashboard</span>
+                </a>
+                <a href="orders.html" class="nav-item">
+                    <i class="fas fa-clipboard-list"></i>
+                    <span>Orders</span>
+                </a>
+                <a href="menu.html" class="nav-item">
+                    <i class="fas fa-utensils"></i>
+                    <span>Menu</span>
+                </a>
+                <a href="delivery.html" class="nav-item">
+                    <i class="fas fa-truck"></i>
+                    <span>Delivery</span>
+                </a>
+                <a href="analytics.html" class="nav-item">
+                    <i class="fas fa-chart-bar"></i>
+                    <span>Analytics</span>
+                </a>
+                <a href="profile.html" class="nav-item active">
+                    <i class="fas fa-user"></i>
+                    <span>Profile</span>
+                </a>
+            </nav>
+            
+            <div class="sidebar-footer">
+                <a href="../auth.html" class="logout-btn">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Logout</span>
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="provider-main">
+            <!-- Header -->
+            <header class="provider-header">
+                <div class="header-left">
+                    <h1>Business Profile</h1>
+                    <p>Manage your business information and verification</p>
+                </div>
+                <div class="header-right">
+                    <div class="verification-status">
+                        <span class="status-badge verified" id="verification-status">
+                            <i class="fas fa-check-circle"></i>
+                            Verified
+                        </span>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Profile Content -->
+            <section class="profile-content">
+                <!-- Basic Information -->
+                <div class="dashboard-card basic-info-card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-info-circle"></i> Basic Information</h3>
+                        <button class="btn btn-secondary" id="edit-basic-info">
+                            <i class="fas fa-edit"></i>
+                            Edit
+                        </button>
+                    </div>
+                    <form class="profile-form" id="basic-info-form">
+                        <div class="profile-header">
+                            <div class="profile-avatar">
+                                <img id="profile-logo" src="../assets/images/hero-bg.jpg" alt="Business Logo">
+                                <div class="avatar-upload">
+                                    <input type="file" id="logo-upload" accept="image/*" style="display: none;">
+                                    <button type="button" class="upload-btn" onclick="document.getElementById('logo-upload').click()">
+                                        <i class="fas fa-camera"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="profile-info">
+                                <h2 id="business-name-display">Rajesh Kitchen</h2>
+                                <p id="business-type-display">Home Kitchen</p>
+                                <div class="rating-display">
+                                    <div class="stars">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star-half-alt"></i>
+                                    </div>
+                                    <span>4.5 (156 reviews)</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="business-name">Business/Mess Name *</label>
+                                <input type="text" id="business-name" name="businessName" value="Rajesh Kitchen" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="owner-name">Owner Name *</label>
+                                <input type="text" id="owner-name" name="ownerName" value="Rajesh Sharma" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="phone">Phone Number *</label>
+                                <input type="tel" id="phone" name="phone" value="+91 98765 43210" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="email">Email Address *</label>
+                                <input type="email" id="email" name="email" value="rajesh@kitchen.com" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="business-type">Business Type *</label>
+                                <select id="business-type" name="businessType" required>
+                                    <option value="home-kitchen">Home Kitchen</option>
+                                    <option value="restaurant">Restaurant</option>
+                                    <option value="cloud-kitchen">Cloud Kitchen</option>
+                                    <option value="mess">Mess/Tiffin Service</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="cuisine-specialty">Cuisine Specialty *</label>
+                                <select id="cuisine-specialty" name="cuisineSpecialty" required>
+                                    <option value="north-indian">North Indian</option>
+                                    <option value="south-indian">South Indian</option>
+                                    <option value="gujarati">Gujarati</option>
+                                    <option value="punjabi">Punjabi</option>
+                                    <option value="bengali">Bengali</option>
+                                    <option value="maharashtrian">Maharashtrian</option>
+                                    <option value="multi-cuisine">Multi-Cuisine</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group full-width">
+                            <label for="business-address">Business Address *</label>
+                            <textarea id="business-address" name="businessAddress" rows="3" required>Shop No. 5, Main Street, Andheri West, Mumbai - 400058</textarea>
+                        </div>
+                        
+                        <div class="form-group full-width">
+                            <label for="business-description">Business Description</label>
+                            <textarea id="business-description" name="businessDescription" rows="4" placeholder="Tell customers about your business, specialties, and what makes you unique...">We serve authentic North Indian home-cooked meals with fresh ingredients and traditional recipes passed down through generations.</textarea>
+                        </div>
+                        
+                        <div class="form-actions">
+                            <button type="button" class="btn btn-secondary" id="cancel-basic-edit">Cancel</button>
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-save"></i>
+                                Save Changes
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Operating Hours -->
+                <div class="dashboard-card operating-hours-card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-clock"></i> Operating Hours</h3>
+                        <button class="btn btn-secondary" id="edit-hours">
+                            <i class="fas fa-edit"></i>
+                            Edit
+                        </button>
+                    </div>
+                    <div class="hours-grid" id="hours-display">
+                        <div class="day-hours">
+                            <span class="day">Monday</span>
+                            <span class="hours">9:00 AM - 9:00 PM</span>
+                        </div>
+                        <div class="day-hours">
+                            <span class="day">Tuesday</span>
+                            <span class="hours">9:00 AM - 9:00 PM</span>
+                        </div>
+                        <div class="day-hours">
+                            <span class="day">Wednesday</span>
+                            <span class="hours">9:00 AM - 9:00 PM</span>
+                        </div>
+                        <div class="day-hours">
+                            <span class="day">Thursday</span>
+                            <span class="hours">9:00 AM - 9:00 PM</span>
+                        </div>
+                        <div class="day-hours">
+                            <span class="day">Friday</span>
+                            <span class="hours">9:00 AM - 9:00 PM</span>
+                        </div>
+                        <div class="day-hours">
+                            <span class="day">Saturday</span>
+                            <span class="hours">9:00 AM - 10:00 PM</span>
+                        </div>
+                        <div class="day-hours">
+                            <span class="day">Sunday</span>
+                            <span class="hours">10:00 AM - 8:00 PM</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Document Verification -->
+                <div class="dashboard-card verification-card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-shield-alt"></i> Document Verification</h3>
+                        <div class="verification-badge">
+                            <span class="badge verified">
+                                <i class="fas fa-check-circle"></i>
+                                Verified Business
+                            </span>
+                        </div>
+                    </div>
+                    <div class="documents-grid">
+                        <div class="document-item">
+                            <div class="document-icon">
+                                <i class="fas fa-id-card"></i>
+                            </div>
+                            <div class="document-info">
+                                <h4>KYC Documents</h4>
+                                <p>Aadhaar Card, PAN Card</p>
+                                <span class="status verified">
+                                    <i class="fas fa-check-circle"></i>
+                                    Verified
+                                </span>
+                            </div>
+                            <div class="document-actions">
+                                <button class="btn btn-sm btn-secondary">
+                                    <i class="fas fa-eye"></i>
+                                    View
+                                </button>
+                                <button class="btn btn-sm btn-primary">
+                                    <i class="fas fa-upload"></i>
+                                    Update
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="document-item">
+                            <div class="document-icon">
+                                <i class="fas fa-certificate"></i>
+                            </div>
+                            <div class="document-info">
+                                <h4>Hygiene Certificate</h4>
+                                <p>Food Safety License</p>
+                                <span class="status verified">
+                                    <i class="fas fa-check-circle"></i>
+                                    Verified
+                                </span>
+                            </div>
+                            <div class="document-actions">
+                                <button class="btn btn-sm btn-secondary">
+                                    <i class="fas fa-eye"></i>
+                                    View
+                                </button>
+                                <button class="btn btn-sm btn-primary">
+                                    <i class="fas fa-upload"></i>
+                                    Update
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="document-item">
+                            <div class="document-icon">
+                                <i class="fas fa-file-contract"></i>
+                            </div>
+                            <div class="document-info">
+                                <h4>Business License</h4>
+                                <p>Trade License/GST Certificate</p>
+                                <span class="status pending">
+                                    <i class="fas fa-clock"></i>
+                                    Pending Review
+                                </span>
+                            </div>
+                            <div class="document-actions">
+                                <button class="btn btn-sm btn-secondary" disabled>
+                                    <i class="fas fa-eye"></i>
+                                    View
+                                </button>
+                                <button class="btn btn-sm btn-primary">
+                                    <i class="fas fa-upload"></i>
+                                    Upload
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bank Details -->
+                <div class="dashboard-card bank-details-card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-university"></i> Bank Details</h3>
+                        <button class="btn btn-secondary" id="edit-bank-details">
+                            <i class="fas fa-edit"></i>
+                            Edit
+                        </button>
+                    </div>
+                    <form class="bank-form" id="bank-form">
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="account-holder">Account Holder Name *</label>
+                                <input type="text" id="account-holder" name="accountHolder" value="Rajesh Sharma" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="account-number">Account Number *</label>
+                                <input type="text" id="account-number" name="accountNumber" value="****1234" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="ifsc-code">IFSC Code *</label>
+                                <input type="text" id="ifsc-code" name="ifscCode" value="HDFC0001234" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="bank-name">Bank Name *</label>
+                                <input type="text" id="bank-name" name="bankName" value="HDFC Bank" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-actions">
+                            <button type="button" class="btn btn-secondary" id="cancel-bank-edit">Cancel</button>
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-save"></i>
+                                Save Bank Details
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Settings -->
+                <div class="dashboard-card settings-card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-cog"></i> Account Settings</h3>
+                    </div>
+                    <div class="settings-list">
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <h4>Email Notifications</h4>
+                                <p>Receive order updates and important announcements</p>
+                            </div>
+                            <label class="toggle-switch">
+                                <input type="checkbox" checked>
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                        
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <h4>SMS Notifications</h4>
+                                <p>Get SMS alerts for new orders and delivery updates</p>
+                            </div>
+                            <label class="toggle-switch">
+                                <input type="checkbox" checked>
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                        
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <h4>Auto-Accept Orders</h4>
+                                <p>Automatically accept orders during business hours</p>
+                            </div>
+                            <label class="toggle-switch">
+                                <input type="checkbox">
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                        
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <h4>Vacation Mode</h4>
+                                <p>Temporarily stop receiving new orders</p>
+                            </div>
+                            <label class="toggle-switch">
+                                <input type="checkbox">
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="danger-zone">
+                        <h4>Danger Zone</h4>
+                        <div class="danger-actions">
+                            <button class="btn btn-warning">
+                                <i class="fas fa-pause"></i>
+                                Deactivate Account
+                            </button>
+                            <button class="btn btn-danger">
+                                <i class="fas fa-trash"></i>
+                                Delete Account
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Document Upload Modal -->
+    <div class="modal" id="document-upload-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Upload Document</h3>
+                <button class="close-btn" id="close-document-modal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="upload-area" id="document-upload-area">
+                    <div class="upload-icon">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                    </div>
+                    <h4>Upload Document</h4>
+                    <p>Drag and drop your file here or click to browse</p>
+                    <input type="file" id="document-file" accept=".pdf,.jpg,.jpeg,.png" style="display: none;">
+                    <button class="btn btn-primary" onclick="document.getElementById('document-file').click()">
+                        Choose File
+                    </button>
+                </div>
+                <div class="upload-guidelines">
+                    <h5>Guidelines:</h5>
+                    <ul>
+                        <li>File formats: PDF, JPG, PNG</li>
+                        <li>Maximum file size: 5MB</li>
+                        <li>Document should be clear and readable</li>
+                        <li>All corners should be visible</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" id="cancel-upload">Cancel</button>
+                <button class="btn btn-primary" id="confirm-upload">
+                    <i class="fas fa-upload"></i>
+                    Upload Document
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../assets/js/provider.js"></script>
+</body>
+</html>
+

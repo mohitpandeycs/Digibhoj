@@ -1,0 +1,68 @@
+[
+    {
+        "id": "r1",
+        "providerId": "p1",
+        "customerId": "c1",
+        "customerName": "Rahul Sharma",
+        "rating": 5,
+        "comment": "Excellent food quality and timely delivery. The North Indian thali is authentic and delicious!",
+        "date": "2024-01-15",
+        "verified": true,
+        "images": []
+    },
+    {
+        "id": "r2",
+        "providerId": "p1",
+        "customerId": "c2",
+        "customerName": "Priya Singh",
+        "rating": 4,
+        "comment": "Good taste but sometimes the delivery is delayed. Overall satisfied with the service.",
+        "date": "2024-01-12",
+        "verified": true,
+        "images": []
+    },
+    {
+        "id": "r3",
+        "providerId": "p2",
+        "customerId": "c3",
+        "customerName": "Arjun Reddy",
+        "rating": 5,
+        "comment": "Best South Indian meals in the area! The sambar and rasam are perfect.",
+        "date": "2024-01-14",
+        "verified": true,
+        "images": ["../assets/images/review1.jpg"]
+    },
+    {
+        "id": "r4",
+        "providerId": "p3",
+        "customerId": "c4",
+        "customerName": "Kavya Jain",
+        "rating": 5,
+        "comment": "Perfect for Jain dietary requirements. Very clean and hygienic preparation.",
+        "date": "2024-01-13",
+        "verified": true,
+        "images": []
+    },
+    {
+        "id": "r5",
+        "providerId": "p4",
+        "customerId": "c5",
+        "customerName": "Simran Kaur",
+        "rating": 4,
+        "comment": "Rich and flavorful Punjabi food. Portions are generous and worth the price.",
+        "date": "2024-01-11",
+        "verified": true,
+        "images": []
+    },
+    {
+        "id": "r6",
+        "providerId": "p5",
+        "customerId": "c6",
+        "customerName": "Amit Patel",
+        "rating": 5,
+        "comment": "Unlimited thali concept is great! Feels like home-cooked Gujarati food.",
+        "date": "2024-01-10",
+        "verified": true,
+        "images": []
+    }
+]

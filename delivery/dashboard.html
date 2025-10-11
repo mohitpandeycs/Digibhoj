@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delivery Dashboard - DigiBhoj</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/delivery.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="delivery-container">
+        <!-- Header/Navbar -->
+        <header class="delivery-header">
+            <div class="header-left">
+                <div class="logo">
+                    <span class="logo-digi">Digi</span><span class="logo-bhoj">Bhoj</span>
+                </div>
+                <div class="delivery-boy-info">
+                    <img src="../assets/images/hero-bg.jpg" alt="Delivery Boy" class="delivery-boy-avatar">
+                    <div class="delivery-boy-details">
+                        <span class="delivery-boy-name" id="delivery-boy-name">Rahul Kumar</span>
+                        <span class="delivery-boy-status online" id="delivery-boy-status">Online</span>
+                    </div>
+                </div>
+            </div>
+            
+            <nav class="delivery-nav">
+                <a href="dashboard.html" class="nav-item active">
+                    <i class="fas fa-tachometer-alt"></i>
+                    <span>Dashboard</span>
+                </a>
+                <a href="map.html" class="nav-item">
+                    <i class="fas fa-map-marked-alt"></i>
+                    <span>Map</span>
+                </a>
+                <a href="earnings.html" class="nav-item">
+                    <i class="fas fa-wallet"></i>
+                    <span>Earnings</span>
+                </a>
+                <a href="profile.html" class="nav-item">
+                    <i class="fas fa-user"></i>
+                    <span>Profile</span>
+                </a>
+            </nav>
+            
+            <div class="header-right">
+                <div class="theme-toggle">
+                    <button class="theme-btn" id="theme-toggle">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                </div>
+                <div class="notification-center">
+                    <button class="notification-btn" id="notification-btn">
+                        <i class="fas fa-bell"></i>
+                        <span class="notification-badge" id="notification-count">3</span>
+                    </button>
+                </div>
+                <a href="../auth.html" class="logout-btn">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Logout</span>
+                </a>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="delivery-main">
+            <!-- Quick Stats -->
+            <section class="delivery-stats">
+                <div class="stats-grid">
+                    <div class="stat-card pending">
+                        <div class="stat-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3 id="pending-deliveries">3</h3>
+                            <p>Pending Deliveries</p>
+                            <span class="stat-change">
+                                <i class="fas fa-clock"></i>
+                                Ready to accept
+                            </span>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card ongoing">
+                        <div class="stat-icon">
+                            <i class="fas fa-truck"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3 id="ongoing-deliveries">2</h3>
+                            <p>Ongoing Deliveries</p>
+                            <span class="stat-change">
+                                <i class="fas fa-truck"></i>
+                                In progress
+                            </span>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card completed">
+                        <div class="stat-icon">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3 id="completed-today">12</h3>
+                            <p>Completed Today</p>
+                            <span class="stat-change positive">
+                                <i class="fas fa-arrow-up"></i>
+                                +2 from yesterday
+                            </span>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card earnings">
+                        <div class="stat-icon">
+                            <i class="fas fa-rupee-sign"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3 id="today-earnings">₹1,250.00</h3>
+                            <p>Today's Earnings</p>
+                            <span class="stat-change positive">
+                                <i class="fas fa-arrow-up"></i>
+                                +12% from yesterday
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Quick Performance Stats -->
+            <section class="performance-stats">
+                <div class="performance-grid">
+                    <div class="performance-card">
+                        <div class="performance-icon">
+                            <i class="fas fa-stopwatch"></i>
+                        </div>
+                        <div class="performance-content">
+                            <h4>Avg Delivery Time</h4>
+                            <span class="performance-value">18 mins</span>
+                            <div class="performance-progress">
+                                <div class="progress-bar" style="width: 85%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="performance-card">
+                        <div class="performance-icon">
+                            <i class="fas fa-route"></i>
+                        </div>
+                        <div class="performance-content">
+                            <h4>Distance Covered</h4>
+                            <span class="performance-value">45.2 km</span>
+                            <div class="performance-progress">
+                                <div class="progress-bar" style="width: 70%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="performance-card">
+                        <div class="performance-icon">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <div class="performance-content">
+                            <h4>Customer Rating</h4>
+                            <span class="performance-value">4.8/5</span>
+                            <div class="performance-progress">
+                                <div class="progress-bar" style="width: 96%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="performance-card">
+                        <div class="performance-icon">
+                            <i class="fas fa-trophy"></i>
+                        </div>
+                        <div class="performance-content">
+                            <h4>Completion Rate</h4>
+                            <span class="performance-value">98.5%</span>
+                            <div class="performance-progress">
+                                <div class="progress-bar" style="width: 98.5%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Gamification Progress -->
+                <div class="gamification-section">
+                    <div class="level-progress">
+                        <div class="level-info">
+                            <h3>Delivery Expert - Level 7</h3>
+                            <p>You have completed <strong>5/6</strong> deliveries today 🚀</p>
+                        </div>
+                        <div class="level-bar">
+                            <div class="level-fill" style="width: 83%;"></div>
+                            <span class="level-text">830/1000 XP</span>
+                        </div>
+                    </div>
+                    
+                    <div class="achievements">
+                        <div class="achievement-badge earned">
+                            <i class="fas fa-bolt"></i>
+                            <span>Speed Demon</span>
+                        </div>
+                        <div class="achievement-badge earned">
+                            <i class="fas fa-heart"></i>
+                            <span>Customer Favorite</span>
+                        </div>
+                        <div class="achievement-badge">
+                            <i class="fas fa-crown"></i>
+                            <span>Daily Champion</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Delivery Queue Panel -->
+            <section class="delivery-queue">
+                <div class="queue-header">
+                    <h2>
+                        <i class="fas fa-list"></i>
+                        Assigned Deliveries
+                    </h2>
+                    <div class="queue-controls">
+                        <div class="search-container">
+                            <div class="search-input-wrapper">
+                                <i class="search-icon fas fa-search"></i>
+                                <input type="text" class="search-input" id="delivery-search" placeholder="Search by Order ID or Customer Name...">
+                                <button class="clear-search" id="clear-delivery-search">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="filter-buttons">
+                            <button class="filter-btn active" data-status="all">
+                                <i class="fas fa-list"></i>
+                                All
+                                <span class="filter-count" id="all-count">5</span>
+                            </button>
+                            <button class="filter-btn pending" data-status="pending">
+                                <i class="fas fa-clock"></i>
+                                Pending
+                                <span class="filter-count" id="pending-count">3</span>
+                            </button>
+                            <button class="filter-btn ongoing" data-status="ongoing">
+                                <i class="fas fa-truck"></i>
+                                Ongoing
+                                <span class="filter-count" id="ongoing-count">2</span>
+                            </button>
+                            <button class="filter-btn completed" data-status="completed">
+                                <i class="fas fa-check-circle"></i>
+                                Completed
+                                <span class="filter-count" id="completed-count">12</span>
+                            </button>
+                        </div>
+                        <button class="refresh-btn" id="refresh-deliveries">
+                            <i class="fas fa-sync-alt"></i>
+                            Refresh
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Assigned Deliveries List -->
+                <div class="deliveries-container">
+                    <div class="deliveries-list" id="deliveries-list">
+                        <!-- Sample delivery cards for demonstration -->
+                        <div class="delivery-card pending" data-order-id="DB001">
+                            <div class="delivery-header">
+                                <div class="order-info">
+                                    <span class="order-id">#DB001</span>
+                                    <span class="order-time">
+                                        <i class="fas fa-clock"></i>
+                                        Assigned 10 mins ago
+                                    </span>
+                                </div>
+                                <div class="delivery-status pending">
+                                    <i class="fas fa-clock"></i>
+                                    Pending
+                                </div>
+                            </div>
+                            
+                            <div class="delivery-body">
+                                <div class="pickup-info">
+                                    <h4>
+                                        <i class="fas fa-store"></i>
+                                        Pickup from
+                                    </h4>
+                                    <p class="provider-name">Rajesh Kitchen</p>
+                                    <p class="provider-address">Shop No. 5, Main Street, Andheri West</p>
+                                    <p class="provider-contact">
+                                        <i class="fas fa-phone"></i>
+                                        +91 98765 43210
+                                    </p>
+                                </div>
+                                
+                                <div class="delivery-route">
+                                    <i class="fas fa-arrow-right"></i>
+                                </div>
+                                
+                                <div class="drop-info">
+                                    <h4>
+                                        <i class="fas fa-home"></i>
+                                        Deliver to
+                                    </h4>
+                                    <p class="customer-name">Priya Sharma</p>
+                                    <p class="customer-address">Flat 201, Building A, Lokhandwala Complex</p>
+                                    <p class="customer-contact">
+                                        <i class="fas fa-phone"></i>
+                                        +91 87654 32109
+                                    </p>
+                                </div>
+                            </div>
+                            
+                            <div class="delivery-footer">
+                                <div class="delivery-details">
+                                    <span class="distance">
+                                        <i class="fas fa-route"></i>
+                                        2.5 km
+                                    </span>
+                                    <span class="estimated-time">
+                                        <i class="fas fa-clock"></i>
+                                        15 mins
+                                    </span>
+                                    <span class="delivery-fee">
+                                        <i class="fas fa-rupee-sign"></i>
+                                        ₹50
+                                    </span>
+                                </div>
+                                <div class="delivery-actions">
+                                    <button class="action-btn reject-btn" onclick="rejectDelivery('DB001')">
+                                        <i class="fas fa-times"></i>
+                                        Reject
+                                    </button>
+                                    <button class="action-btn accept-btn" onclick="acceptDelivery('DB001')">
+                                        <i class="fas fa-check"></i>
+                                        Accept
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- More delivery cards will be populated by JS -->
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Notifications Sidebar -->
+        <aside class="notifications-sidebar" id="notifications-sidebar">
+            <div class="notifications-header">
+                <h3>
+                    <i class="fas fa-bell"></i>
+                    Notifications
+                </h3>
+                <button class="close-notifications" id="close-notifications">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="notifications-list">
+                <div class="notification-item new">
+                    <div class="notification-icon order">
+                        <i class="fas fa-shopping-bag"></i>
+                    </div>
+                    <div class="notification-content">
+                        <p class="notification-message">New order assigned from Rajesh Kitchen</p>
+                        <span class="notification-time">2 minutes ago</span>
+                    </div>
+                </div>
+                
+                <div class="notification-item">
+                    <div class="notification-icon delivery">
+                        <i class="fas fa-truck"></i>
+                    </div>
+                    <div class="notification-content">
+                        <p class="notification-message">Order #DB002 delivered successfully</p>
+                        <span class="notification-time">1 hour ago</span>
+                    </div>
+                </div>
+                
+                <div class="notification-item">
+                    <div class="notification-icon earnings">
+                        <i class="fas fa-rupee-sign"></i>
+                    </div>
+                    <div class="notification-content">
+                        <p class="notification-message">₹75 earned from delivery #DB003</p>
+                        <span class="notification-time">2 hours ago</span>
+                    </div>
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Reject Delivery Modal -->
+    <div class="modal" id="reject-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Reject Delivery</h3>
+                <button class="close-btn" id="close-reject-modal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Please provide a reason for rejecting this delivery:</p>
+                <textarea id="reject-reason" rows="4" placeholder="Enter rejection reason..." required></textarea>
+                <div class="quick-reasons">
+                    <h5>Quick Reasons:</h5>
+                    <button class="reason-btn" data-reason="Vehicle breakdown">Vehicle breakdown</button>
+                    <button class="reason-btn" data-reason="Personal emergency">Personal emergency</button>
+                    <button class="reason-btn" data-reason="Too far from location">Too far from location</button>
+                    <button class="reason-btn" data-reason="Already at capacity">Already at capacity</button>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" id="cancel-reject">Cancel</button>
+                <button class="btn btn-danger" id="confirm-reject">
+                    <i class="fas fa-times"></i>
+                    Reject Delivery
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../assets/js/delivery.js"></script>
+    <script src="../assets/js/delivery-charts.js"></script>
+</body>
+</html>

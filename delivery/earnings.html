@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Earnings - DigiBhoj</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/delivery.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="delivery-container">
+        <!-- Header/Navbar -->
+        <header class="delivery-header">
+            <div class="header-left">
+                <div class="logo">
+                    <span class="logo-digi">Digi</span><span class="logo-bhoj">Bhoj</span>
+                </div>
+                <div class="delivery-boy-info">
+                    <img src="../assets/images/hero-bg.jpg" alt="Delivery Boy" class="delivery-boy-avatar">
+                    <div class="delivery-boy-details">
+                        <span class="delivery-boy-name" id="delivery-boy-name">Rahul Kumar</span>
+                        <span class="delivery-boy-status online" id="delivery-boy-status">Online</span>
+                    </div>
+                </div>
+            </div>
+            
+            <nav class="delivery-nav">
+                <a href="dashboard.html" class="nav-item">
+                    <i class="fas fa-tachometer-alt"></i>
+                    <span>Dashboard</span>
+                </a>
+                <a href="map.html" class="nav-item">
+                    <i class="fas fa-map-marked-alt"></i>
+                    <span>Map</span>
+                </a>
+                <a href="earnings.html" class="nav-item active">
+                    <i class="fas fa-wallet"></i>
+                    <span>Earnings</span>
+                </a>
+                <a href="profile.html" class="nav-item">
+                    <i class="fas fa-user"></i>
+                    <span>Profile</span>
+                </a>
+            </nav>
+            
+            <div class="header-right">
+                <div class="theme-toggle">
+                    <button class="theme-btn" id="theme-toggle">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                </div>
+                <div class="notification-center">
+                    <button class="notification-btn" id="notification-btn">
+                        <i class="fas fa-bell"></i>
+                        <span class="notification-badge" id="notification-count">1</span>
+                    </button>
+                </div>
+                <a href="../auth.html" class="logout-btn">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Logout</span>
+                </a>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="delivery-main">
+            <!-- Summary Cards -->
+            <section class="earnings-summary">
+                <div class="summary-grid">
+                    <div class="summary-card today">
+                        <div class="card-icon">
+                            <i class="fas fa-calendar-day"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3 id="today-earnings">₹1,250.00</h3>
+                            <p>Today's Earnings</p>
+                            <span class="stat-change positive">
+                                <i class="fas fa-arrow-up"></i>
+                                +15% from yesterday
+                            </span>
+                        </div>
+                    </div>
+                    
+                    <div class="summary-card week">
+                        <div class="card-icon">
+                            <i class="fas fa-calendar-week"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3 id="week-earnings">₹8,750.00</h3>
+                            <p>This Week</p>
+                            <span class="stat-change positive">
+                                <i class="fas fa-arrow-up"></i>
+                                +8% from last week
+                            </span>
+                        </div>
+                    </div>
+                    
+                    <div class="summary-card deliveries">
+                        <div class="card-icon">
+                            <i class="fas fa-truck"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3 id="total-deliveries">127</h3>
+                            <p>Total Completed Deliveries</p>
+                            <span class="card-change">
+                                <i class="fas fa-check-circle"></i>
+                                9 completed today
+                            </span>
+                        </div>
+                    </div>
+                    
+                    <div class="summary-card pending">
+                        <div class="card-icon">
+                            <i class="fas fa-hourglass-half"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3 id="pending-payments">₹320</h3>
+                            <p>Pending Payments</p>
+                            <span class="card-change warning">
+                                <i class="fas fa-clock"></i>
+                                2 payments pending
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Earnings Controls -->
+            <section class="earnings-controls">
+                <div class="controls-header">
+                    <h2>
+                        <i class="fas fa-chart-line"></i>
+                        Earnings History
+                    </h2>
+                    <div class="controls-actions">
+                        <div class="date-range-picker">
+                            <div class="custom-select" id="date-range-select">
+                                <div class="select-display">
+                                    <span class="select-text">Last 7 days</span>
+                                    <i class="select-arrow fas fa-chevron-down"></i>
+                                </div>
+                                <div class="select-dropdown">
+                                    <div class="select-option" data-value="today">Today</div>
+                                    <div class="select-option" data-value="week" selected>Last 7 days</div>
+                                    <div class="select-option" data-value="month">Last 30 days</div>
+                                    <div class="select-option" data-value="all">All time</div>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="export-btn" id="export-earnings">
+                            <i class="fas fa-download"></i>
+                            Export Report
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Earnings Chart -->
+            <section class="earnings-chart-section">
+                <div class="chart-container">
+                    <canvas id="earnings-chart" width="400" height="200"></canvas>
+                </div>
+                
+                <!-- Additional Charts Section -->
+                <div class="additional-charts">
+                    <div class="chart-row">
+                        <div class="chart-card">
+                            <div class="chart-header">
+                                <h3>
+                                    <i class="fas fa-chart-pie"></i>
+                                    Earnings Breakdown
+                                </h3>
+                                <p>Revenue sources this month</p>
+                            </div>
+                            <div class="chart-container small">
+                                <canvas id="breakdown-chart" width="300" height="300"></canvas>
+                            </div>
+                        </div>
+                        
+                        <div class="chart-card">
+                            <div class="chart-header">
+                                <h3>
+                                    <i class="fas fa-chart-line"></i>
+                                    Performance Trend
+                                </h3>
+                                <p>Delivery efficiency over time</p>
+                            </div>
+                            <div class="chart-container small">
+                                <canvas id="performance-chart" width="300" height="300"></canvas>
+                            </div>
+                        </div>
+                </div>
+            </section>
+
+            <!-- Earnings History Table -->
+            <section class="earnings-history">
+                <div class="history-header">
+                    <h3>
+                        <i class="fas fa-history"></i>
+                        Recent Deliveries
+                    </h3>
+                    <div class="history-filters">
+                        <div class="search-container">
+                            <div class="search-input-wrapper">
+                                <i class="search-icon fas fa-search"></i>
+                                <input type="text" class="search-input" id="earnings-search" placeholder="Search by Order ID...">
+                                <button class="clear-search" id="clear-earnings-search">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="status-filter">
+                            <div class="custom-select" id="status-filter-select">
+                                <div class="select-display">
+                                    <span class="select-text">All Status</span>
+                                    <i class="select-arrow fas fa-chevron-down"></i>
+                                </div>
+                                <div class="select-dropdown">
+                                    <div class="select-option" data-value="all" selected>All Status</div>
+                                    <div class="select-option" data-value="paid">Paid</div>
+                                    <div class="select-option" data-value="pending">Pending</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="earnings-table-container">
+                    <table class="earnings-table" id="earnings-table">
+                        <thead>
+                            <tr>
+                                <th>Order ID</th>
+                                <th>Date & Time</th>
+                                <th>Distance</th>
+                                <th>Base Fee</th>
+                                <th>Distance Bonus</th>
+                                <th>Total Earnings</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="earning-row">
+                                <td>
+                                    <span class="order-id">#DB001</span>
+                                </td>
+                                <td>
+                                    <div class="datetime-info">
+                                        <span class="date">Jan 15, 2025</span>
+                                        <span class="time">2:30 PM</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <span class="distance">2.5 km</span>
+                                </td>
+                                <td>
+                                    <span class="base-fee">₹30</span>
+                                </td>
+                                <td>
+                                    <span class="distance-bonus">₹20</span>
+                                </td>
+                                <td>
+                                    <span class="total-earnings">₹50</span>
+                                </td>
+                                <td>
+                                    <span class="status-badge paid">
+                                        <i class="fas fa-check-circle"></i>
+                                        Paid
+                                    </span>
+                                </td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="action-btn view-btn" onclick="viewDeliveryDetails('DB001')">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                             
+                            <tr class="earning-row">
+                                <td>
+                                    <span class="order-id">#DB002</span>
+                                </td>
+                                <td>
+                                    <div class="datetime-info">
+                                        <span class="date">Jan 15, 2025</span>
+                                        <span class="time">1:15 PM</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <span class="distance">1.8 km</span>
+                                </td>
+                                <td>
+                                    <span class="base-fee">₹30</span>
+                                </td>
+                                <td>
+                                    <span class="distance-bonus">₹15</span>
+                                </td>
+                                <td>
+                                    <span class="total-earnings">₹45</span>
+                                </td>
+                                <td>
+                                    <span class="status-badge pending">
+                                        <i class="fas fa-clock"></i>
+                                        Pending
+                                    </span>
+                                </td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="action-btn view-btn" onclick="viewDeliveryDetails('DB002')">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                             
+                            <tr class="earning-row">
+                                <td>
+                                    <span class="order-id">#DB003</span>
+                                </td>
+                                <td>
+                                    <div class="datetime-info">
+                                        <span class="date">Jan 15, 2025</span>
+                                        <span class="time">12:00 PM</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <span class="distance">3.2 km</span>
+                                </td>
+                                <td>
+                                    <span class="base-fee">₹30</span>
+                                </td>
+                                <td>
+                                    <span class="distance-bonus">₹25</span>
+                                </td>
+                                <td>
+                                    <span class="total-earnings">₹55</span>
+                                </td>
+                                <td>
+                                    <span class="status-badge paid">
+                                        <i class="fas fa-check-circle"></i>
+                                        Paid
+                                    </span>
+                                </td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="action-btn view-btn" onclick="viewDeliveryDetails('DB003')">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <!-- Pagination -->
+                <div class="pagination">
+                    <button class="pagination-btn prev" disabled>
+                        <i class="fas fa-chevron-left"></i>
+                        Previous
+                    </button>
+                    <div class="pagination-info">
+                        <span>Showing 1-10 of 127 deliveries</span>
+                    </div>
+                    <button class="pagination-btn next">
+                        Next
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Delivery Details Modal -->
+    <div class="modal" id="delivery-details-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Delivery Details</h3>
+                <button class="close-btn" id="close-details-modal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="delivery-details-content">
+                    <div class="details-section">
+                        <h4>Order Information</h4>
+                        <div class="details-grid">
+                            <div class="detail-item">
+                                <span class="detail-label">Order ID:</span>
+                                <span class="detail-value" id="modal-order-id">#DB001</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Date:</span>
+                                <span class="detail-value" id="modal-date">Jan 15, 2025 - 2:30 PM</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Distance:</span>
+                                <span class="detail-value" id="modal-distance">2.5 km</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Duration:</span>
+                                <span class="detail-value" id="modal-duration">18 minutes</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="details-section">
+                        <h4>Earnings Breakdown</h4>
+                        <div class="earnings-breakdown">
+                            <div class="breakdown-item">
+                                <span class="breakdown-label">Base Delivery Fee:</span>
+                                <span class="breakdown-value">₹30</span>
+                            </div>
+                            <div class="breakdown-item">
+                                <span class="breakdown-label">Distance Bonus (₹8/km):</span>
+                                <span class="breakdown-value">₹20</span>
+                            </div>
+                            <div class="breakdown-item">
+                                <span class="breakdown-label">Time Bonus:</span>
+                                <span class="breakdown-value">₹0</span>
+                            </div>
+                            <div class="breakdown-item total">
+                                <span class="breakdown-label">Total Earnings:</span>
+                                <span class="breakdown-value">₹50</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="details-section">
+                        <h4>Route Details</h4>
+                        <div class="route-details">
+                            <div class="route-point pickup">
+                                <i class="fas fa-store"></i>
+                                <div class="point-info">
+                                    <span class="point-label">Pickup:</span>
+                                    <span class="point-name">Rajesh Kitchen</span>
+                                    <span class="point-address">Shop No. 5, Main Street, Andheri West</span>
+                                </div>
+                            </div>
+                            <div class="route-arrow">
+                                <i class="fas fa-arrow-down"></i>
+                            </div>
+                            <div class="route-point delivery">
+                                <i class="fas fa-home"></i>
+                                <div class="point-info">
+                                    <span class="point-label">Delivery:</span>
+                                    <span class="point-name">Priya Sharma</span>
+                                    <span class="point-address">Flat 201, Building A, Lokhandwala Complex</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" id="close-modal">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../assets/js/delivery.js"></script>
+</body>
+</html>
+

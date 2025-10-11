@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orders Management - DigiBhoj</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/provider.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="provider-container">
+        <!-- Sidebar -->
+        <aside class="provider-sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <span class="logo-digi">Digi</span><span class="logo-bhoj">Bhoj</span>
+                </div>
+                <p class="provider-name">Provider Panel</p>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <a href="dashboard.html" class="nav-item">
+                    <i class="fas fa-tachometer-alt"></i>
+                    <span>Dashboard</span>
+                </a>
+                <a href="orders.html" class="nav-item active">
+                    <i class="fas fa-clipboard-list"></i>
+                    <span>Orders</span>
+                </a>
+                <a href="menu.html" class="nav-item">
+                    <i class="fas fa-utensils"></i>
+                    <span>Menu</span>
+                </a>
+                <a href="delivery.html" class="nav-item">
+                    <i class="fas fa-truck"></i>
+                    <span>Delivery</span>
+                </a>
+                <a href="analytics.html" class="nav-item">
+                    <i class="fas fa-chart-bar"></i>
+                    <span>Analytics</span>
+                </a>
+                <a href="profile.html" class="nav-item">
+                    <i class="fas fa-user"></i>
+                    <span>Profile</span>
+                </a>
+            </nav>
+            
+            <div class="sidebar-footer">
+                <a href="../auth.html" class="logout-btn">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Logout</span>
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="provider-main">
+            <!-- Header -->
+            <header class="provider-header">
+                <div class="header-left">
+                    <h1>Orders Management</h1>
+                    <p>View and manage customer orders</p>
+                </div>
+                <div class="header-right">
+                    <div class="order-stats">
+                        <div class="stat-item">
+                            <span class="stat-number" id="pending-count">0</span>
+                            <span class="stat-label">Pending</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number" id="preparing-count">0</span>
+                            <span class="stat-label">Preparing</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number" id="ready-count">0</span>
+                            <span class="stat-label">Ready</span>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Orders Content -->
+            <section class="orders-content">
+                <!-- Order Filters -->
+                <div class="order-filters">
+                    <div class="filter-header">
+                        <h3 class="filter-title">
+                            <div class="filter-title-icon">
+                                <i class="fas fa-filter"></i>
+                            </div>
+                            Filter Orders
+                        </h3>
+                        <button class="refresh-btn" id="refresh-orders">
+                            <i class="fas fa-sync-alt"></i>
+                            REFRESH
+                        </button>
+                    </div>
+                    
+                    <div class="filter-buttons-container">
+                        <button class="order-filter-btn all-orders active" data-status="all">
+                            <i class="filter-icon fas fa-list"></i>
+                            <span class="filter-text">All Orders</span>
+                            <span class="filter-count" id="all-count">0</span>
+                        </button>
+                        <button class="order-filter-btn pending" data-status="pending">
+                            <i class="filter-icon fas fa-clock"></i>
+                            <span class="filter-text">Pending</span>
+                            <span class="filter-count" id="pending-tab-count">0</span>
+                        </button>
+                        <button class="order-filter-btn accepted" data-status="accepted">
+                            <i class="filter-icon fas fa-check"></i>
+                            <span class="filter-text">Accepted</span>
+                            <span class="filter-count" id="accepted-count">0</span>
+                        </button>
+                        <button class="order-filter-btn preparing" data-status="preparing">
+                            <i class="filter-icon fas fa-utensils"></i>
+                            <span class="filter-text">Preparing</span>
+                            <span class="filter-count" id="preparing-tab-count">0</span>
+                        </button>
+                        <button class="order-filter-btn ready" data-status="ready">
+                            <i class="filter-icon fas fa-box"></i>
+                            <span class="filter-text">Ready</span>
+                            <span class="filter-count" id="ready-tab-count">0</span>
+                        </button>
+                        <button class="order-filter-btn completed" data-status="completed">
+                            <i class="filter-icon fas fa-check-circle"></i>
+                            <span class="filter-text">Completed</span>
+                            <span class="filter-count" id="completed-count">0</span>
+                        </button>
+                        <button class="order-filter-btn cancelled" data-status="cancelled">
+                            <i class="filter-icon fas fa-times-circle"></i>
+                            <span class="filter-text">Cancelled</span>
+                            <span class="filter-count" id="cancelled-count">0</span>
+                        </button>
+                    </div>
+                    
+                    <div class="additional-filters">
+                        <div class="search-container">
+                            <div class="search-input-wrapper">
+                                <i class="search-icon fas fa-search"></i>
+                                <input type="text" class="search-input" id="order-search" placeholder="Search by Order ID or Customer Name...">
+                                <button class="clear-search" id="clear-search">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="select-wrapper">
+                            <label class="select-label">Filter by Date</label>
+                            <div class="custom-select" id="date-filter-select">
+                                <div class="select-display">
+                                    <span class="select-text">Today</span>
+                                    <i class="select-arrow fas fa-chevron-down"></i>
+                                </div>
+                                <div class="select-dropdown">
+                                    <div class="select-option" data-value="today">
+                                        <span>Today</span>
+                                    </div>
+                                    <div class="select-option" data-value="yesterday">
+                                        <span>Yesterday</span>
+                                    </div>
+                                    <div class="select-option" data-value="week">
+                                        <span>This Week</span>
+                                    </div>
+                                    <div class="select-option" data-value="month">
+                                        <span>This Month</span>
+                                    </div>
+                                    <div class="select-option" data-value="all">
+                                        <span>All Time</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Orders Table -->
+                <div class="dashboard-card orders-table-card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-receipt"></i> Orders List</h3>
+                        <div class="table-actions">
+                            <button class="btn btn-primary" id="bulk-accept" style="display: none;">
+                                <i class="fas fa-check"></i>
+                                Accept Selected
+                            </button>
+                        </div>
+                    </div>
+                    <div class="orders-table-container">
+                        <table class="orders-table">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        <input type="checkbox" id="select-all">
+                                    </th>
+                                    <th>Order ID</th>
+                                    <th>Customer</th>
+                                    <th>Items</th>
+                                    <th>Plan Type</th>
+                                    <th>Amount</th>
+                                    <th>Payment</th>
+                                    <th>Status</th>
+                                    <th>Order Time</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="orders-tbody">
+                                <!-- Orders will be populated by JS -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Order Details Modal -->
+    <div class="modal" id="order-details-modal">
+        <div class="modal-content large">
+            <div class="modal-header">
+                <h3>Order Details</h3>
+                <button class="close-btn" id="close-order-modal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="order-details-grid">
+                    <div class="order-info-section">
+                        <h4>Order Information</h4>
+                        <div class="info-grid">
+                            <div class="info-item">
+                                <label>Order ID:</label>
+                                <span id="modal-order-id">#DB123456</span>
+                            </div>
+                            <div class="info-item">
+                                <label>Order Date:</label>
+                                <span id="modal-order-date">Today, 2:30 PM</span>
+                            </div>
+                            <div class="info-item">
+                                <label>Plan Type:</label>
+                                <span id="modal-plan-type">Daily Plan</span>
+                            </div>
+                            <div class="info-item">
+                                <label>Payment Status:</label>
+                                <span id="modal-payment-status" class="status-badge">Paid</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="customer-info-section">
+                        <h4>Customer Information</h4>
+                        <div class="info-grid">
+                            <div class="info-item">
+                                <label>Name:</label>
+                                <span id="modal-customer-name">Rahul Sharma</span>
+                            </div>
+                            <div class="info-item">
+                                <label>Phone:</label>
+                                <span id="modal-customer-phone">+91 98765 43210</span>
+                            </div>
+                            <div class="info-item">
+                                <label>Address:</label>
+                                <span id="modal-customer-address">123 Main Street, Mumbai</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="order-items-section">
+                    <h4>Order Items</h4>
+                    <div class="items-list" id="modal-items-list">
+                        <!-- Items will be populated by JS -->
+                    </div>
+                </div>
+                
+                <div class="order-total-section">
+                    <div class="total-breakdown">
+                        <div class="total-row">
+                            <span>Subtotal:</span>
+                            <span id="modal-subtotal">₹0</span>
+                        </div>
+                        <div class="total-row">
+                            <span>Delivery Fee:</span>
+                            <span id="modal-delivery-fee">₹20</span>
+                        </div>
+                        <div class="total-row">
+                            <span>Service Fee:</span>
+                            <span id="modal-service-fee">₹10</span>
+                        </div>
+                        <div class="total-row final">
+                            <span>Total Amount:</span>
+                            <span id="modal-total-amount">₹0</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="order-actions">
+                    <button class="btn btn-success" id="modal-accept-btn">
+                        <i class="fas fa-check"></i>
+                        Accept Order
+                    </button>
+                    <button class="btn btn-warning" id="modal-preparing-btn" style="display: none;">
+                        <i class="fas fa-utensils"></i>
+                        Mark Preparing
+                    </button>
+                    <button class="btn btn-info" id="modal-ready-btn" style="display: none;">
+                        <i class="fas fa-box"></i>
+                        Mark Ready
+                    </button>
+                    <button class="btn btn-danger" id="modal-reject-btn">
+                        <i class="fas fa-times"></i>
+                        Reject Order
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Reject Order Modal -->
+    <div class="modal" id="reject-order-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Reject Order</h3>
+                <button class="close-btn" id="close-reject-modal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Please provide a reason for rejecting this order:</p>
+                <textarea id="reject-reason" rows="4" placeholder="Enter rejection reason..." required></textarea>
+                <div class="quick-reasons">
+                    <h5>Quick Reasons:</h5>
+                    <button class="reason-btn" data-reason="Out of stock">Out of stock</button>
+                    <button class="reason-btn" data-reason="Kitchen closed">Kitchen closed</button>
+                    <button class="reason-btn" data-reason="Delivery area not covered">Delivery area not covered</button>
+                    <button class="reason-btn" data-reason="High order volume">High order volume</button>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" id="cancel-reject-btn">Cancel</button>
+                <button class="btn btn-danger" id="confirm-reject-btn">
+                    <i class="fas fa-times"></i>
+                    Reject Order
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../assets/js/provider.js"></script>
+</body>
+</html>
+

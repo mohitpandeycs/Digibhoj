@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DigiBhoj - Customer Dashboard</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/customer.css">
+    <link rel="stylesheet" href="../assets/css/responsive.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <!-- Customer Navbar -->
+    <header class="customer-header">
+        <div class="container">
+            <div class="customer-nav">
+                <div class="logo">
+                    <a href="home.html"><span class="logo-digi">Digi</span><span class="logo-bhoj">Bhoj</span></a>
+                </div>
+                
+                <!-- Search Bar -->
+                <div class="search-container">
+                    <div class="search-bar">
+                        <input type="text" id="search-input" placeholder="Search for providers, cuisines..." autocomplete="off">
+                        <button id="search-btn" aria-label="Search" title="Search providers">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Right Icons -->
+                <div class="nav-icons">
+                    <button class="cart-icon" id="cart-btn" aria-label="View Cart" title="View Cart">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count" id="cart-count">0</span>
+                    </button>
+                    <div class="profile-dropdown">
+                        <button class="profile-btn" id="profile-btn">
+                            <i class="fas fa-user"></i>
+                            <span class="profile-name">Customer</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="dropdown-menu" id="profile-dropdown">
+                            <a href="profile.html" class="dropdown-item">
+                                <i class="fas fa-user"></i>
+                                Profile
+                            </a>
+                            <a href="profile.html#orders" class="dropdown-item">
+                                <i class="fas fa-box"></i>
+                                Orders
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a href="../auth.html" class="dropdown-item logout">
+                                <i class="fas fa-sign-out-alt"></i>
+                                Logout
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="discover-main">
+        <div class="discover-container">
+            <!-- Sidebar Filters -->
+            <aside class="filters-sidebar">
+                <div class="filters-header">
+                    <h3><i class="fas fa-filter"></i> Filters</h3>
+                    <button class="reset-btn" id="reset-filters">Reset</button>
+                </div>
+
+                <!-- Search -->
+                <div class="filter-section">
+                    <h4>Search</h4>
+                    <div class="search-input-container">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="sidebar-search" placeholder="Search mess, cuisine, dish...">
+                    </div>
+                </div>
+
+                <!-- Cuisine Filter -->
+                <div class="filter-section">
+                    <h4>Cuisine</h4>
+                    <div class="checkbox-group">
+                        <label class="checkbox-item">
+                            <input type="checkbox" value="gujarati" name="cuisine">
+                            <span class="checkmark"></span>
+                            Gujarati
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" value="south-indian" name="cuisine">
+                            <span class="checkmark"></span>
+                            South Indian
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" value="punjabi" name="cuisine">
+                            <span class="checkmark"></span>
+                            Punjabi
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" value="bengali" name="cuisine">
+                            <span class="checkmark"></span>
+                            Bengali
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" value="north-indian" name="cuisine">
+                            <span class="checkmark"></span>
+                            North Indian
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" value="marathi" name="cuisine">
+                            <span class="checkmark"></span>
+                            Marathi
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" value="jain" name="cuisine">
+                            <span class="checkmark"></span>
+                            Jain
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Diet Preferences -->
+                <div class="filter-section">
+                    <h4>Diet Preferences</h4>
+                    <div class="checkbox-group">
+                        <label class="checkbox-item">
+                            <input type="checkbox" value="vegetarian" name="diet">
+                            <span class="checkmark"></span>
+                            Vegetarian
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" value="jain" name="diet">
+                            <span class="checkmark"></span>
+                            Jain
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" value="vegan" name="diet">
+                            <span class="checkmark"></span>
+                            Vegan
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" value="non-veg" name="diet">
+                            <span class="checkmark"></span>
+                            Non-Veg
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" value="pure-veg" name="diet">
+                            <span class="checkmark"></span>
+                            Pure Vegetarian
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Price Range -->
+                <div class="filter-section">
+                    <h4>Price Range</h4>
+                    <div class="price-range-container">
+                        <input type="range" id="price-slider" min="0" max="400" value="400" class="price-slider">
+                        <div class="price-labels">
+                            <span>₹0</span>
+                            <span>₹400</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Verified Providers -->
+                <div class="filter-section">
+                    <label class="checkbox-item">
+                        <input type="checkbox" id="verified-only" name="verified">
+                        <span class="checkmark"></span>
+                        Verified providers only
+                    </label>
+                </div>
+
+                <!-- Apply Filters Button -->
+                <button class="apply-filters-btn" id="apply-filters">Apply Filters</button>
+            </aside>
+
+            <!-- Main Content -->
+            <div class="main-content">
+                <!-- Header -->
+                <div class="discover-header">
+                    <h1>Discover Local Messes</h1>
+                    <p class="provider-count"><span id="provider-count">6</span> providers found in your area</p>
+                </div>
+
+                <!-- Active Filters Tags -->
+                <div class="active-filters" id="active-filters">
+                    <span class="filter-tag">South Indian <i class="fas fa-times"></i></span>
+                    <span class="filter-tag">Gujarati <i class="fas fa-times"></i></span>
+                    <span class="filter-tag">Punjabi <i class="fas fa-times"></i></span>
+                    <span class="filter-tag">Bengali <i class="fas fa-times"></i></span>
+                    <span class="filter-tag">North Indian <i class="fas fa-times"></i></span>
+                    <span class="filter-tag">Marathi <i class="fas fa-times"></i></span>
+                    <span class="filter-tag">Jain <i class="fas fa-times"></i></span>
+                </div>
+
+                <!-- Providers Grid -->
+                <div class="providers-grid-modern" id="providers-grid">
+                    <!-- Provider cards will be dynamically loaded here -->
+                </div>
+
+                <!-- Loading Spinner -->
+                <div class="loading-spinner" id="loading-spinner" style="display: none;">
+                    <i class="fas fa-spinner fa-spin"></i>
+                    <p>Loading providers...</p>
+                </div>
+
+                <!-- No Results -->
+                <div class="no-results" id="no-results" style="display: none;">
+                    <i class="fas fa-search"></i>
+                    <h3>No providers found</h3>
+                    <p>Try adjusting your filters or search terms</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Enhanced Footer -->
+    <footer class="main-footer">
+        <div class="footer-wave">
+            <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25" class="shape-fill"></path>
+                <path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5" class="shape-fill"></path>
+                <path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" class="shape-fill"></path>
+            </svg>
+        </div>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section brand-section">
+                    <div class="footer-logo">
+                        <span class="logo-digi">Digi</span><span class="logo-bhoj">Bhoj</span>
+                    </div>
+                    <p class="footer-tagline">Your trusted partner for delicious, healthy tiffin services delivered fresh to your doorstep.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link" aria-label="Facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Twitter">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="WhatsApp">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4><i class="fas fa-link"></i> Quick Links</h4>
+                    <ul>
+                        <li><a href="home.html"><i class="fas fa-home"></i> Home</a></li>
+                        <li><a href="provider.html"><i class="fas fa-utensils"></i> Browse Providers</a></li>
+                        <li><a href="profile.html"><i class="fas fa-user"></i> My Profile</a></li>
+                        <li><a href="cart.html"><i class="fas fa-shopping-cart"></i> My Cart</a></li>
+                        <li><a href="checkout.html"><i class="fas fa-receipt"></i> Order Tracking</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4><i class="fas fa-headset"></i> Support</h4>
+                    <ul>
+                        <li><a href="#"><i class="fas fa-question-circle"></i> Help Center</a></li>
+                        <li><a href="#"><i class="fas fa-phone"></i> Contact Us</a></li>
+                        <li><a href="#"><i class="fas fa-shield-alt"></i> Privacy Policy</a></li>
+                        <li><a href="#"><i class="fas fa-file-contract"></i> Terms of Service</a></li>
+                        <li><a href="#"><i class="fas fa-star"></i> Rate Us</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section contact-section">
+                    <h4><i class="fas fa-map-marker-alt"></i> Get In Touch</h4>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <span>+91 98765 43210</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>support@digibhoj.com</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-clock"></i>
+                            <span>24/7 Customer Support</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Mumbai, Maharashtra</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="footer-bottom-content">
+                    <p>&copy; 2024 DigiBhoj. All rights reserved.</p>
+                    <div class="footer-badges">
+                        <span class="badge"><i class="fas fa-shield-check"></i> Secure Payments</span>
+                        <span class="badge"><i class="fas fa-truck"></i> Fast Delivery</span>
+                        <span class="badge"><i class="fas fa-leaf"></i> Fresh Food</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/customer.js"></script>
+</body>
+</html>

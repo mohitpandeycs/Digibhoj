@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DigiBhoj - Home</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header class="main-header">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">DigiBhoj</a>
+            </div>
+            <nav class="main-nav">
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <div class="nav-buttons">
+                    <a href="auth.html" class="btn btn-secondary">Login</a>
+                    <a href="auth.html" class="btn btn-primary">Sign Up</a>
+                    <button id="theme-toggle" class="btn btn-theme-toggle"><i class="fas fa-cog"></i></button>
+                </div>
+            </nav>
+            <div class="hamburger-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="hero-section">
+            <div class="container">
+                <div class="hero-content">
+                    <h1>Fresh, Affordable Meals Delivered Daily.</h1>
+                    <p>Connecting customers, mess providers, and delivery partners on one digital platform.</p>
+                    <div class="hero-cta-buttons">
+                        <a href="auth.html?role=customer" class="btn btn-cta btn-red"><i class="fas fa-utensils"></i> Find a Meal</a>
+                        <a href="auth.html?role=provider" class="btn btn-cta btn-blue"><i class="fas fa-store"></i> List My Mess</a>
+                        <a href="auth.html?role=delivery" class="btn btn-cta btn-green"><i class="fas fa-truck"></i> Join as Delivery Partner</a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <!-- Placeholder for hero image/illustration -->
+                    <img src="assets/images/hero-illustration.png" alt="Food Delivery Illustration">
+                </div>
+            </div>
+        </section>
+
+        <!-- Who It’s For Section -->
+        <section id="about" class="role-cards-section">
+            <div class="container">
+                <h2>Choose Your Role</h2>
+                <p class="section-subtitle">Join our platform that works for everyone</p>
+                <div class="role-cards-grid">
+                    <a href="auth.html?role=customer" class="role-card">
+                        <div class="card-icon"><i class="fas fa-utensils"></i></div>
+                        <h3>For Customers</h3>
+                        <p>Discover trusted messes, flexible plans, and home-style meals.</p>
+                    </a>
+                    <a href="auth.html?role=provider" class="role-card">
+                        <div class="card-icon"><i class="fas fa-store"></i></div>
+                        <h3>For Providers</h3>
+                        <p>Grow your business with digital menus, payments, and analytics.</p>
+                    </a>
+                    <a href="auth.html?role=delivery" class="role-card">
+                        <div class="card-icon"><i class="fas fa-truck"></i></div>
+                        <h3>For Delivery Partners</h3>
+                        <p>Get delivery assignments, navigation, and daily earnings.</p>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- How DigiBhoj Works Section -->
+        <section id="how-it-works" class="how-it-works-section">
+            <div class="container">
+                <h2>How DigiBhoj Works</h2>
+                <div class="timeline">
+                    <div class="timeline-step">
+                        <div class="step-icon"><i class="fas fa-search"></i></div>
+                        <p>Browse & Compare Providers</p>
+                    </div>
+                    <div class="timeline-step">
+                        <div class="step-icon"><i class="fas fa-calendar-alt"></i></div>
+                        <p>Choose Your Plan</p>
+                    </div>
+                    <div class="timeline-step">
+                        <div class="step-icon"><i class="fas fa-map-marker-alt"></i></div>
+                        <p>Track Delivery in Real-Time</p>
+                    </div>
+                    <div class="timeline-step">
+                        <div class="step-icon"><i class="fas fa-check-circle"></i></div>
+                        <p>Enjoy Your Meal</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Key Features Section -->
+        <section id="features" class="features-section">
+            <div class="container">
+                <h2>Key Features</h2>
+                <div class="features-grid">
+                    <div class="feature-item">
+                        <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
+                        <h3>Hygiene Verification</h3>
+                        <p>Ensuring top-notch food safety and quality standards.</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon"><i class="fas fa-calendar-check"></i></div>
+                        <h3>Flexible Plans</h3>
+                        <p>Daily, weekly, and monthly subscription options to fit your needs.</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon"><i class="fas fa-clipboard-list"></i></div>
+                        <h3>Transparent Menus & Pricing</h3>
+                        <p>Clear details on meals, ingredients, and costs upfront.</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon"><i class="fas fa-route"></i></div>
+                        <h3>Real-time Delivery Tracking</h3>
+                        <p>Monitor your meal's journey from kitchen to your doorstep.</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon"><i class="fas fa-star"></i></div>
+                        <h3>Ratings & Reviews</h3>
+                        <p>Share and read feedback to make informed choices.</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon"><i class="fas fa-chart-line"></i></div>
+                        <h3>Analytics for Providers</h3>
+                        <p>Gain insights into sales, demand, and customer preferences.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sample Provider Showcase -->
+        <section id="providers" class="provider-showcase-section">
+            <div class="container">
+                <h2>Our Top Providers</h2>
+                <div class="provider-cards-grid" id="provider-showcase">
+                    <!-- Provider cards will be loaded dynamically here -->
+                </div>
+                <div class="text-center mt-4">
+                    <a href="customer/home.html" class="btn btn-primary">See All Providers</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Call-to-Action (Bottom Banner) -->
+        <section class="cta-banner-section">
+            <div class="container">
+                <h2>Ready to experience hassle-free meals?</h2>
+                <a href="auth.html" class="btn btn-cta btn-red btn-large">Get Started Now &rarr;</a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-links">
+                <a href="#">About</a>
+                <a href="#">Privacy</a>
+                <a href="#">Contact</a>
+            </div>
+            <p class="footer-description">DigiBhoj: Connecting you with fresh, home-style meals.</p>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+            <p class="copyright">&copy; 2025 DigiBhoj. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/auth.js"></script>
+    <script src="assets/js/customer.js"></script>
+</body>
+</html>

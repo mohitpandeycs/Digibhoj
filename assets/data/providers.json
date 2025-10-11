@@ -1,0 +1,123 @@
+[
+    {
+        "id": "p1",
+        "name": "Sharma's Tiffin Service",
+        "cuisine": "North Indian",
+        "rating": 4.5,
+        "totalReviews": 127,
+        "image": "../assets/images/provider1.jpg",
+        "description": "Authentic North Indian home-style cooking with fresh ingredients",
+        "location": "Downtown",
+        "hygieneBadge": true,
+        "deliveryTime": "30-45 mins",
+        "minOrder": 100,
+        "plans": {
+            "daily": { "lunch": 120, "dinner": 150, "both": 250 },
+            "weekly": { "lunch": 800, "dinner": 1000, "both": 1600 },
+            "monthly": { "lunch": 3200, "dinner": 4000, "both": 6400 }
+        },
+        "timing": {
+            "lunch": "12:00 PM - 2:00 PM",
+            "dinner": "7:00 PM - 9:00 PM"
+        },
+        "capacity": 50,
+        "available": 35
+    },
+    {
+        "id": "p2",
+        "name": "South Spice Tiffin",
+        "cuisine": "South Indian",
+        "rating": 4.2,
+        "totalReviews": 89,
+        "image": "../assets/images/provider2.jpg",
+        "description": "Traditional South Indian meals with authentic spices and flavors",
+        "location": "University Area",
+        "hygieneBadge": true,
+        "deliveryTime": "25-40 mins",
+        "minOrder": 80,
+        "plans": {
+            "daily": { "lunch": 100, "dinner": 130, "both": 220 },
+            "weekly": { "lunch": 650, "dinner": 850, "both": 1400 },
+            "monthly": { "lunch": 2600, "dinner": 3400, "both": 5600 }
+        },
+        "timing": {
+            "lunch": "11:30 AM - 2:30 PM",
+            "dinner": "6:30 PM - 9:30 PM"
+        },
+        "capacity": 40,
+        "available": 28
+    },
+    {
+        "id": "p3",
+        "name": "Jain Satvik Meals",
+        "cuisine": "Jain",
+        "rating": 4.7,
+        "totalReviews": 156,
+        "image": "../assets/images/provider3.jpg",
+        "description": "Pure Jain vegetarian meals prepared with utmost care",
+        "location": "Suburbs",
+        "hygieneBadge": true,
+        "deliveryTime": "35-50 mins",
+        "minOrder": 120,
+        "plans": {
+            "daily": { "lunch": 140, "dinner": 170, "both": 290 },
+            "weekly": { "lunch": 900, "dinner": 1150, "both": 1900 },
+            "monthly": { "lunch": 3600, "dinner": 4600, "both": 7600 }
+        },
+        "timing": {
+            "lunch": "12:00 PM - 1:30 PM",
+            "dinner": "7:30 PM - 9:00 PM"
+        },
+        "capacity": 30,
+        "available": 22
+    },
+    {
+        "id": "p4",
+        "name": "Punjabi Dhaba Express",
+        "cuisine": "Punjabi",
+        "rating": 4.3,
+        "totalReviews": 203,
+        "image": "../assets/images/provider4.jpg",
+        "description": "Rich and flavorful Punjabi cuisine with generous portions",
+        "location": "Business District",
+        "hygieneBadge": true,
+        "deliveryTime": "30-45 mins",
+        "minOrder": 110,
+        "plans": {
+            "daily": { "lunch": 130, "dinner": 160, "both": 270 },
+            "weekly": { "lunch": 850, "dinner": 1050, "both": 1750 },
+            "monthly": { "lunch": 3400, "dinner": 4200, "both": 7000 }
+        },
+        "timing": {
+            "lunch": "11:45 AM - 2:15 PM",
+            "dinner": "7:00 PM - 9:30 PM"
+        },
+        "capacity": 60,
+        "available": 45
+    },
+    {
+        "id": "p5",
+        "name": "Gujarati Thali House",
+        "cuisine": "Gujarati",
+        "rating": 4.6,
+        "totalReviews": 178,
+        "image": "../assets/images/provider5.jpg",
+        "description": "Traditional Gujarati thali with unlimited servings",
+        "location": "Downtown",
+        "hygieneBadge": true,
+        "deliveryTime": "25-35 mins",
+        "minOrder": 90,
+        "plans": {
+            "daily": { "lunch": 110, "dinner": 140, "both": 230 },
+            "weekly": { "lunch": 700, "dinner": 900, "both": 1500 },
+            "monthly": { "lunch": 2800, "dinner": 3600, "both": 6000 }
+        },
+        "timing": {
+            "lunch": "12:15 PM - 2:00 PM",
+            "dinner": "7:15 PM - 9:15 PM"
+        },
+        "capacity": 45,
+        "available": 32
+    }
+]
+

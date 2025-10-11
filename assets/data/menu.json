@@ -1,0 +1,73 @@
+[
+    {
+        "id": "m1",
+        "providerId": "p1",
+        "name": "North Indian Thali",
+        "description": "Dal, Sabzi, Roti, Rice, Pickle, Papad",
+        "price": 120,
+        "category": "Lunch",
+        "type": "vegetarian",
+        "image": "../assets/images/thali1.jpg"
+    },
+    {
+        "id": "m2",
+        "providerId": "p1",
+        "name": "Dinner Special",
+        "description": "Dal, Paneer Sabzi, Roti, Rice, Raita, Sweet",
+        "price": 150,
+        "category": "Dinner",
+        "type": "vegetarian",
+        "image": "../assets/images/dinner1.jpg"
+    },
+    {
+        "id": "m3",
+        "providerId": "p2",
+        "name": "South Indian Meals",
+        "description": "Sambar, Rasam, Vegetables, Rice, Curd, Pickle",
+        "price": 100,
+        "category": "Lunch",
+        "type": "vegetarian",
+        "image": "../assets/images/south1.jpg"
+    },
+    {
+        "id": "m4",
+        "providerId": "p2",
+        "name": "Dosa Combo",
+        "description": "Dosa, Sambar, Coconut Chutney, Tomato Chutney",
+        "price": 80,
+        "category": "Breakfast",
+        "type": "vegetarian",
+        "image": "../assets/images/dosa1.jpg"
+    },
+    {
+        "id": "m5",
+        "providerId": "p3",
+        "name": "Jain Thali",
+        "description": "Pure Jain meal without onion, garlic, potato",
+        "price": 140,
+        "category": "Lunch",
+        "type": "jain",
+        "image": "../assets/images/jain1.jpg"
+    },
+    {
+        "id": "m6",
+        "providerId": "p4",
+        "name": "Punjabi Combo",
+        "description": "Dal Makhani, Butter Naan, Rice, Lassi",
+        "price": 130,
+        "category": "Lunch",
+        "type": "vegetarian",
+        "image": "../assets/images/punjabi1.jpg"
+    },
+    {
+        "id": "m7",
+        "providerId": "p5",
+        "name": "Gujarati Thali",
+        "description": "Unlimited Dal, Sabzi, Roti, Rice, Farsan, Sweet",
+        "price": 110,
+        "category": "Lunch",
+        "type": "vegetarian",
+        "image": "../assets/images/gujarati1.jpg"
+    }
+]
+

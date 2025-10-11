@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Provider Dashboard - DigiBhoj</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/provider.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="provider-container">
+        <!-- Sidebar -->
+        <aside class="provider-sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <span class="logo-digi">Digi</span><span class="logo-bhoj">Bhoj</span>
+                </div>
+                <p class="provider-name">Provider Panel</p>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <a href="dashboard.html" class="nav-item active">
+                    <i class="fas fa-tachometer-alt"></i>
+                    <span>Dashboard</span>
+                </a>
+                <a href="orders.html" class="nav-item">
+                    <i class="fas fa-clipboard-list"></i>
+                    <span>Orders</span>
+                </a>
+                <a href="menu.html" class="nav-item">
+                    <i class="fas fa-utensils"></i>
+                    <span>Menu</span>
+                </a>
+                <a href="delivery.html" class="nav-item">
+                    <i class="fas fa-truck"></i>
+                    <span>Delivery</span>
+                </a>
+                <a href="analytics.html" class="nav-item">
+                    <i class="fas fa-chart-bar"></i>
+                    <span>Analytics</span>
+                </a>
+                <a href="profile.html" class="nav-item">
+                    <i class="fas fa-user"></i>
+                    <span>Profile</span>
+                </a>
+            </nav>
+            
+            <div class="sidebar-footer">
+                <a href="../auth.html" class="logout-btn">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Logout</span>
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="provider-main">
+            <!-- Header -->
+            <header class="provider-header">
+                <div class="header-left">
+                    <h1>Dashboard</h1>
+                    <p>Welcome back! Here's what's happening with your business today.</p>
+                </div>
+                <div class="header-right">
+                    <div class="notification-icon">
+                        <i class="fas fa-bell"></i>
+                        <span class="notification-badge" id="notification-count">3</span>
+                    </div>
+                    <div class="provider-profile">
+                        <img src="../assets/images/hero-bg.jpg" alt="Provider" class="profile-img">
+                        <span class="provider-name" id="provider-name">Rajesh Kitchen</span>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Quick Stats -->
+            <section class="stats-section">
+                <div class="stats-grid">
+                    <div class="stat-card orders">
+                        <div class="stat-icon">
+                            <i class="fas fa-shopping-cart"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3 id="total-orders-today">0</h3>
+                            <p>Total Orders Today</p>
+                            <span class="stat-change positive" id="orders-change">+12% from yesterday</span>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card earnings">
+                        <div class="stat-icon">
+                            <i class="fas fa-rupee-sign"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3 id="earnings-today">₹0</h3>
+                            <p>Earnings Today</p>
+                            <span class="stat-change positive" id="earnings-change">+8% from yesterday</span>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card pending">
+                        <div class="stat-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3 id="pending-deliveries">0</h3>
+                            <p>Pending Deliveries</p>
+                            <span class="stat-change neutral" id="pending-change">Same as yesterday</span>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card reviews">
+                        <div class="stat-icon">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3 id="new-reviews">0</h3>
+                            <p>New Reviews</p>
+                            <span class="stat-change positive" id="reviews-change">+2 this week</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Notifications & Shortcuts -->
+            <section class="dashboard-content">
+                <div class="content-grid">
+                    <!-- Notifications -->
+                    <div class="notifications-container">
+                        <div class="notifications-header">
+                            <h3 class="notifications-title">
+                                <div class="notifications-icon">
+                                    <i class="fas fa-bell"></i>
+                                </div>
+                                Recent Notifications
+                            </h3>
+                            <button class="view-all-btn">View All</button>
+                        </div>
+                        <div class="notifications-list" id="notifications-list">
+                            <!-- Sample notifications for demonstration -->
+                            <div class="notification-item">
+                                <div class="notification-type-icon order">
+                                    <i class="fas fa-shopping-cart"></i>
+                                </div>
+                                <div class="notification-content">
+                                    <p class="notification-message">New order received from John Doe</p>
+                                    <div class="notification-time">
+                                        <i class="fas fa-clock"></i>
+                                        2 minutes ago
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="notification-item">
+                                <div class="notification-type-icon payment">
+                                    <i class="fas fa-credit-card"></i>
+                                </div>
+                                <div class="notification-content">
+                                    <p class="notification-message">Payment of ₹450 received</p>
+                                    <div class="notification-time">
+                                        <i class="fas fa-clock"></i>
+                                        5 minutes ago
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="notification-item">
+                                <div class="notification-type-icon delivery">
+                                    <i class="fas fa-truck"></i>
+                                </div>
+                                <div class="notification-content">
+                                    <p class="notification-message">Order #1234 delivered successfully</p>
+                                    <div class="notification-time">
+                                        <i class="fas fa-clock"></i>
+                                        10 minutes ago
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Quick Shortcuts -->
+                    <div class="quick-actions-container">
+                        <div class="quick-actions-header">
+                            <h3 class="quick-actions-title">
+                                <div class="quick-actions-icon">
+                                    <i class="fas fa-bolt"></i>
+                                </div>
+                                Quick Actions
+                            </h3>
+                        </div>
+                        <div class="quick-actions-grid">
+                            <a href="menu.html" class="quick-action-card">
+                                <div class="quick-action-icon">
+                                    <i class="fas fa-plus"></i>
+                                </div>
+                                <p class="quick-action-text">Add Menu Item</p>
+                            </a>
+                            <a href="orders.html" class="quick-action-card">
+                                <div class="quick-action-icon">
+                                    <i class="fas fa-list"></i>
+                                </div>
+                                <p class="quick-action-text">Check Orders</p>
+                            </a>
+                            <a href="analytics.html" class="quick-action-card">
+                                <div class="quick-action-icon">
+                                    <i class="fas fa-chart-line"></i>
+                                </div>
+                                <p class="quick-action-text">View Analytics</p>
+                            </a>
+                            <a href="delivery.html" class="quick-action-card">
+                                <div class="quick-action-icon">
+                                    <i class="fas fa-truck"></i>
+                                </div>
+                                <p class="quick-action-text">Assign Delivery</p>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Recent Orders -->
+                <div class="dashboard-card recent-orders-card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-receipt"></i> Recent Orders</h3>
+                        <button class="view-all-btn" onclick="location.href='orders.html'">View All Orders</button>
+                    </div>
+                    <div class="orders-table-container">
+                        <table class="orders-table">
+                            <thead>
+                                <tr>
+                                    <th>Order ID</th>
+                                    <th>Customer</th>
+                                    <th>Items</th>
+                                    <th>Amount</th>
+                                    <th>Status</th>
+                                    <th>Time</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="recent-orders-tbody">
+                                <!-- Recent orders will be populated by JS -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="../assets/js/provider.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DigiBhoj - Provider Details</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/customer.css">
+    <link rel="stylesheet" href="../assets/css/responsive.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <!-- Customer Navbar -->
+    <header class="customer-header">
+        <div class="container">
+            <div class="customer-nav">
+                <div class="logo">
+                    <a href="home.html"><span class="logo-digi">Digi</span><span class="logo-bhoj">Bhoj</span></a>
+                </div>
+                
+                <!-- Search Bar -->
+                <div class="search-container">
+                    <div class="search-bar">
+                        <input type="text" id="search-input" placeholder="Search for providers, cuisines..." autocomplete="off">
+                        <button id="search-btn" aria-label="Search" title="Search providers">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Right Icons -->
+                <div class="nav-icons">
+                    <button class="cart-icon" id="cart-btn" aria-label="View Cart" title="View Cart">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count" id="cart-count">0</span>
+                    </button>
+                    <div class="profile-dropdown">
+                        <button class="profile-btn" id="profile-btn">
+                            <i class="fas fa-user"></i>
+                            <span class="profile-name">Customer</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="dropdown-menu" id="profile-dropdown">
+                            <a href="profile.html" class="dropdown-item">
+                                <i class="fas fa-user"></i>
+                                Profile
+                            </a>
+                            <a href="profile.html#orders" class="dropdown-item">
+                                <i class="fas fa-box"></i>
+                                Orders
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a href="../auth.html" class="dropdown-item logout">
+                                <i class="fas fa-sign-out-alt"></i>
+                                Logout
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="provider-main">
+        <!-- Provider Header -->
+        <section class="provider-header">
+            <div class="container">
+                <div class="provider-info">
+                    <div class="provider-image">
+                        <img id="provider-image" src="../assets/images/mess-placeholder.jpg" alt="Provider Image">
+                        <div class="hygiene-badge">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Hygiene Certified</span>
+                        </div>
+                    </div>
+                    <div class="provider-details">
+                        <h1 id="provider-name">Provider Name</h1>
+                        <div class="provider-rating">
+                            <div class="stars" id="provider-stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                            </div>
+                            <span class="rating-text" id="rating-text">4.2 (128 reviews)</span>
+                        </div>
+                        <div class="provider-meta">
+                            <span class="cuisine-type" id="cuisine-type">North Indian</span>
+                            <span class="delivery-time" id="delivery-time">30-45 mins</span>
+                            <span class="min-order" id="min-order">Min. ₹100</span>
+                        </div>
+                        <div class="provider-description" id="provider-description">
+                            Fresh, home-style cooking with authentic flavors. We serve delicious meals with love and care.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Provider Tabs -->
+        <section class="provider-tabs">
+            <div class="container">
+                <div class="tab-navigation">
+                    <button class="tab-btn active" data-tab="menu">
+                        <i class="fas fa-utensils"></i>
+                        Menu
+                    </button>
+                    <button class="tab-btn" data-tab="plans">
+                        <i class="fas fa-box"></i>
+                        Plans
+                    </button>
+                    <button class="tab-btn" data-tab="timing">
+                        <i class="fas fa-clock"></i>
+                        Timing & Capacity
+                    </button>
+                    <button class="tab-btn" data-tab="pricing">
+                        <i class="fas fa-rupee-sign"></i>
+                        Pricing
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tab Content -->
+        <section class="tab-content">
+            <div class="container">
+                <!-- Menu Tab -->
+                <div class="tab-panel active" id="menu-tab">
+                    <h3>Today's Menu</h3>
+                    <div class="menu-filter-tabs">
+                        <button class="menu-filter-btn active" data-category="all">All Items</button>
+                        <button class="menu-filter-btn" data-category="breakfast">Breakfast</button>
+                        <button class="menu-filter-btn" data-category="lunch">Lunch</button>
+                        <button class="menu-filter-btn" data-category="dinner">Dinner</button>
+                    </div>
+                    <div class="menu-categories" id="menu-categories">
+                        <!-- Menu items will be loaded here -->
+                    </div>
+                </div>
+
+                <!-- Plans Tab -->
+                <div class="tab-panel" id="plans-tab">
+                    <h3>Subscription Plans</h3>
+                    <p class="plans-description">Choose from our flexible meal plans that fit your lifestyle</p>
+                    <div class="plans-grid" id="plans-grid">
+                        <!-- Plans will be loaded here -->
+                    </div>
+                </div>
+
+                <!-- Timing Tab -->
+                <div class="tab-panel" id="timing-tab">
+                    <h3>Delivery Schedule & Capacity</h3>
+                    <div class="timing-info">
+                        <div class="delivery-slots">
+                            <h4>Delivery Slots</h4>
+                            <div class="slots-grid" id="delivery-slots">
+                                <!-- Delivery slots will be loaded here -->
+                            </div>
+                        </div>
+                        <div class="capacity-info">
+                            <h4>Current Capacity</h4>
+                            <div class="capacity-status" id="capacity-status">
+                                <!-- Capacity info will be loaded here -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pricing Tab -->
+                <div class="tab-panel" id="pricing-tab">
+                    <h3>Pricing Details</h3>
+                    <div class="pricing-table" id="pricing-table">
+                        <!-- Pricing details will be loaded here -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Customer Reviews -->
+        <section class="reviews-section">
+            <div class="container">
+                <div class="reviews-header">
+                    <h3>Customer Reviews</h3>
+                    <button class="btn btn-primary" id="add-review-btn">
+                        <i class="fas fa-plus"></i>
+                        Add Review
+                    </button>
+                </div>
+                <div class="reviews-list" id="reviews-list">
+                    <!-- Reviews will be loaded here -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Enhanced Footer -->
+    <footer class="main-footer">
+        <div class="footer-wave">
+            <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25" class="shape-fill"></path>
+                <path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5" class="shape-fill"></path>
+                <path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" class="shape-fill"></path>
+            </svg>
+        </div>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section brand-section">
+                    <div class="footer-logo">
+                        <span class="logo-digi">Digi</span><span class="logo-bhoj">Bhoj</span>
+                    </div>
+                    <p class="footer-tagline">Your trusted partner for delicious, healthy tiffin services delivered fresh to your doorstep.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link" aria-label="Facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Twitter">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="WhatsApp">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4><i class="fas fa-link"></i> Quick Links</h4>
+                    <ul>
+                        <li><a href="home.html"><i class="fas fa-home"></i> Home</a></li>
+                        <li><a href="provider.html"><i class="fas fa-utensils"></i> Browse Providers</a></li>
+                        <li><a href="profile.html"><i class="fas fa-user"></i> My Profile</a></li>
+                        <li><a href="cart.html"><i class="fas fa-shopping-cart"></i> My Cart</a></li>
+                        <li><a href="checkout.html"><i class="fas fa-receipt"></i> Order Tracking</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4><i class="fas fa-headset"></i> Support</h4>
+                    <ul>
+                        <li><a href="#"><i class="fas fa-question-circle"></i> Help Center</a></li>
+                        <li><a href="#"><i class="fas fa-phone"></i> Contact Us</a></li>
+                        <li><a href="#"><i class="fas fa-shield-alt"></i> Privacy Policy</a></li>
+                        <li><a href="#"><i class="fas fa-file-contract"></i> Terms of Service</a></li>
+                        <li><a href="#"><i class="fas fa-star"></i> Rate Us</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section contact-section">
+                    <h4><i class="fas fa-map-marker-alt"></i> Get In Touch</h4>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <span>+91 98765 43210</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>support@digibhoj.com</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-clock"></i>
+                            <span>24/7 Customer Support</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Mumbai, Maharashtra</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="footer-bottom-content">
+                    <p>&copy; 2024 DigiBhoj. All rights reserved.</p>
+                    <div class="footer-badges">
+                        <span class="badge"><i class="fas fa-shield-check"></i> Secure Payments</span>
+                        <span class="badge"><i class="fas fa-truck"></i> Fast Delivery</span>
+                        <span class="badge"><i class="fas fa-leaf"></i> Fresh Food</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/provider.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analytics - DigiBhoj</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/provider.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="provider-container">
+        <!-- Sidebar -->
+        <aside class="provider-sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <span class="logo-digi">Digi</span><span class="logo-bhoj">Bhoj</span>
+                </div>
+                <p class="provider-name">Provider Panel</p>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <a href="dashboard.html" class="nav-item">
+                    <i class="fas fa-tachometer-alt"></i>
+                    <span>Dashboard</span>
+                </a>
+                <a href="orders.html" class="nav-item">
+                    <i class="fas fa-clipboard-list"></i>
+                    <span>Orders</span>
+                </a>
+                <a href="menu.html" class="nav-item">
+                    <i class="fas fa-utensils"></i>
+                    <span>Menu</span>
+                </a>
+                <a href="delivery.html" class="nav-item">
+                    <i class="fas fa-truck"></i>
+                    <span>Delivery</span>
+                </a>
+                <a href="analytics.html" class="nav-item active">
+                    <i class="fas fa-chart-bar"></i>
+                    <span>Analytics</span>
+                </a>
+                <a href="profile.html" class="nav-item">
+                    <i class="fas fa-user"></i>
+                    <span>Profile</span>
+                </a>
+            </nav>
+            
+            <div class="sidebar-footer">
+                <a href="../auth.html" class="logout-btn">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Logout</span>
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="provider-main">
+            <!-- Header -->
+            <header class="provider-header">
+                <div class="header-left">
+                    <h1>Analytics & Reports</h1>
+                    <p>Track your business performance and insights</p>
+                </div>
+                <div class="header-right">
+                    <div class="date-range-selector">
+                        <select id="analytics-period">
+                            <option value="today">Today</option>
+                            <option value="week" selected>This Week</option>
+                            <option value="month">This Month</option>
+                            <option value="quarter">This Quarter</option>
+                            <option value="year">This Year</option>
+                        </select>
+                        <button class="btn btn-secondary" id="export-report">
+                            <i class="fas fa-download"></i>
+                            Export Report
+                        </button>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Analytics Content -->
+            <section class="analytics-content">
+                <!-- Revenue Overview -->
+                <div class="dashboard-card revenue-overview-card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-chart-line"></i> Revenue Overview</h3>
+                        <div class="chart-controls">
+                            <button class="chart-btn active" data-chart="revenue">Revenue</button>
+                            <button class="chart-btn" data-chart="orders">Orders</button>
+                            <button class="chart-btn" data-chart="customers">Customers</button>
+                        </div>
+                    </div>
+                    <div class="revenue-stats">
+                        <div class="revenue-stat">
+                            <h4 id="total-revenue">₹0</h4>
+                            <p>Total Revenue</p>
+                            <span class="change positive" id="revenue-change">+15.3%</span>
+                        </div>
+                        <div class="revenue-stat">
+                            <h4 id="avg-order-value">₹0</h4>
+                            <p>Avg Order Value</p>
+                            <span class="change positive" id="aov-change">+8.2%</span>
+                        </div>
+                        <div class="revenue-stat">
+                            <h4 id="total-orders-analytics">0</h4>
+                            <p>Total Orders</p>
+                            <span class="change positive" id="orders-change-analytics">+12.5%</span>
+                        </div>
+                        <div class="revenue-stat">
+                            <h4 id="conversion-rate">0%</h4>
+                            <p>Conversion Rate</p>
+                            <span class="change neutral" id="conversion-change">+2.1%</span>
+                        </div>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="revenue-chart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Earnings Breakdown -->
+                <div class="analytics-grid">
+                    <div class="dashboard-card earnings-breakdown-card">
+                        <div class="card-header">
+                            <h3><i class="fas fa-rupee-sign"></i> Earnings Breakdown</h3>
+                        </div>
+                        <div class="earnings-summary">
+                            <div class="earning-item">
+                                <div class="earning-icon today">
+                                    <i class="fas fa-calendar-day"></i>
+                                </div>
+                                <div class="earning-details">
+                                    <h4 id="today-earnings">₹0</h4>
+                                    <p>Today's Earnings</p>
+                                    <small class="earning-change positive" id="today-change">+₹120 from yesterday</small>
+                                </div>
+                            </div>
+                            
+                            <div class="earning-item">
+                                <div class="earning-icon week">
+                                    <i class="fas fa-calendar-week"></i>
+                                </div>
+                                <div class="earning-details">
+                                    <h4 id="week-earnings">₹0</h4>
+                                    <p>This Week's Earnings</p>
+                                    <small class="earning-change positive" id="week-change">+₹850 from last week</small>
+                                </div>
+                            </div>
+                            
+                            <div class="earning-item">
+                                <div class="earning-icon month">
+                                    <i class="fas fa-calendar-alt"></i>
+                                </div>
+                                <div class="earning-details">
+                                    <h4 id="month-earnings">₹0</h4>
+                                    <p>Monthly Revenue</p>
+                                    <small class="earning-change positive" id="month-change">+₹3,200 from last month</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Popular Items -->
+                    <div class="dashboard-card popular-items-card">
+                        <div class="card-header">
+                            <h3><i class="fas fa-star"></i> Popular Items</h3>
+                            <select id="popular-period">
+                                <option value="week">This Week</option>
+                                <option value="month">This Month</option>
+                                <option value="all">All Time</option>
+                            </select>
+                        </div>
+                        <div class="popular-items-list" id="popular-items-list">
+                            <!-- Popular items will be populated by JS -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Performance Metrics -->
+                <div class="analytics-grid">
+                    <div class="dashboard-card demand-insights-card">
+                        <div class="card-header">
+                            <h3><i class="fas fa-chart-pie"></i> Demand Insights</h3>
+                        </div>
+                        <div class="insights-content">
+                            <div class="insight-chart">
+                                <canvas id="cuisine-chart"></canvas>
+                            </div>
+                            <div class="insights-list">
+                                <div class="insight-item">
+                                    <span class="insight-label">Most Popular Cuisine</span>
+                                    <span class="insight-value" id="top-cuisine">North Indian</span>
+                                </div>
+                                <div class="insight-item">
+                                    <span class="insight-label">Peak Order Time</span>
+                                    <span class="insight-value" id="peak-time">12:00 PM - 2:00 PM</span>
+                                </div>
+                                <div class="insight-item">
+                                    <span class="insight-label">Best Selling Plan</span>
+                                    <span class="insight-value" id="best-plan">Daily Plan</span>
+                                </div>
+                                <div class="insight-item">
+                                    <span class="insight-label">Customer Retention</span>
+                                    <span class="insight-value" id="retention-rate">78%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Customer Feedback -->
+                    <div class="dashboard-card feedback-trends-card">
+                        <div class="card-header">
+                            <h3><i class="fas fa-comments"></i> Customer Feedback</h3>
+                        </div>
+                        <div class="feedback-summary">
+                            <div class="rating-overview">
+                                <div class="overall-rating">
+                                    <h2 id="overall-rating">4.5</h2>
+                                    <div class="stars">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star-half-alt"></i>
+                                    </div>
+                                    <p id="total-reviews">Based on 156 reviews</p>
+                                </div>
+                                <div class="rating-breakdown">
+                                    <div class="rating-bar">
+                                        <span>5★</span>
+                                        <div class="bar">
+                                            <div class="fill" style="width: 70%"></div>
+                                        </div>
+                                        <span>70%</span>
+                                    </div>
+                                    <div class="rating-bar">
+                                        <span>4★</span>
+                                        <div class="bar">
+                                            <div class="fill" style="width: 20%"></div>
+                                        </div>
+                                        <span>20%</span>
+                                    </div>
+                                    <div class="rating-bar">
+                                        <span>3★</span>
+                                        <div class="bar">
+                                            <div class="fill" style="width: 7%"></div>
+                                        </div>
+                                        <span>7%</span>
+                                    </div>
+                                    <div class="rating-bar">
+                                        <span>2★</span>
+                                        <div class="bar">
+                                            <div class="fill" style="width: 2%"></div>
+                                        </div>
+                                        <span>2%</span>
+                                    </div>
+                                    <div class="rating-bar">
+                                        <span>1★</span>
+                                        <div class="bar">
+                                            <div class="fill" style="width: 1%"></div>
+                                        </div>
+                                        <span>1%</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Activity -->
+                <div class="dashboard-card recent-activity-card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-clock"></i> Recent Activity</h3>
+                        <button class="btn btn-secondary" id="view-all-activity">View All</button>
+                    </div>
+                    <div class="activity-timeline" id="activity-timeline">
+                        <!-- Activity items will be populated by JS -->
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="../assets/js/provider.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</body>
+</html>
+

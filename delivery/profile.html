@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile - DigiBhoj</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/delivery.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="delivery-container">
+        <!-- Header/Navbar -->
+        <header class="delivery-header">
+            <div class="header-left">
+                <div class="logo">
+                    <span class="logo-digi">Digi</span><span class="logo-bhoj">Bhoj</span>
+                </div>
+                <div class="delivery-boy-info">
+                    <img src="../assets/images/hero-bg.jpg" alt="Delivery Boy" class="delivery-boy-avatar">
+                    <div class="delivery-boy-details">
+                        <span class="delivery-boy-name" id="delivery-boy-name">Rahul Kumar</span>
+                        <span class="delivery-boy-status online" id="delivery-boy-status">Online</span>
+                    </div>
+                </div>
+            </div>
+            
+            <nav class="delivery-nav">
+                <a href="dashboard.html" class="nav-item">
+                    <i class="fas fa-tachometer-alt"></i>
+                    <span>Dashboard</span>
+                </a>
+                <a href="map.html" class="nav-item">
+                    <i class="fas fa-map-marked-alt"></i>
+                    <span>Map</span>
+                </a>
+                <a href="earnings.html" class="nav-item">
+                    <i class="fas fa-wallet"></i>
+                    <span>Earnings</span>
+                </a>
+                <a href="profile.html" class="nav-item active">
+                    <i class="fas fa-user"></i>
+                    <span>Profile</span>
+                </a>
+            </nav>
+            
+            <div class="header-right">
+                <div class="theme-toggle">
+                    <button class="theme-btn" id="theme-toggle">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                </div>
+                <div class="notification-center">
+                    <button class="notification-btn" id="notification-btn">
+                        <i class="fas fa-bell"></i>
+                        <span class="notification-badge" id="notification-count">0</span>
+                    </button>
+                </div>
+                <a href="../auth.html" class="logout-btn">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Logout</span>
+                </a>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="delivery-main">
+            <!-- Profile Header -->
+            <section class="profile-header">
+                <div class="profile-banner">
+                    <div class="profile-avatar-section">
+                        <div class="profile-avatar-container">
+                            <img src="../assets/images/hero-bg.jpg" alt="Profile Picture" class="profile-avatar-large" id="profile-picture">
+                            <button class="avatar-upload-btn" id="upload-avatar">
+                                <i class="fas fa-camera"></i>
+                            </button>
+                        </div>
+                        <div class="profile-basic-info">
+                            <h2 class="profile-name">Rahul Kumar</h2>
+                            <p class="profile-id">Delivery ID: DB2025001</p>
+                            <div class="profile-status-badges">
+                                <span class="status-badge verified">
+                                    <i class="fas fa-check-circle"></i>
+                                    Verified
+                                </span>
+                                <span class="status-badge online">
+                                    <i class="fas fa-circle"></i>
+                                    Online
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="profile-quick-stats">
+                        <div class="quick-stat">
+                            <span class="stat-number">4.8</span>
+                            <span class="stat-label">Rating</span>
+                            <div class="rating-stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                        <div class="quick-stat">
+                            <span class="stat-number">127</span>
+                            <span class="stat-label">Deliveries</span>
+                        </div>
+                        <div class="quick-stat">
+                            <span class="stat-number">₹12,450</span>
+                            <span class="stat-label">Total Earned</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <div class="profile-content">
+                <!-- Personal Information -->
+                <section class="profile-section">
+                    <div class="section-header">
+                        <h3>
+                            <i class="fas fa-user"></i>
+                            Personal Information
+                        </h3>
+                        <button class="edit-btn" id="edit-personal-info">
+                            <i class="fas fa-edit"></i>
+                            Edit
+                        </button>
+                    </div>
+                    
+                    <div class="profile-form" id="personal-info-form">
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="full-name">Full Name</label>
+                                <input type="text" id="full-name" value="Rahul Kumar" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email Address</label>
+                                <input type="email" id="email" value="rahul.kumar@email.com" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Phone Number</label>
+                                <input type="tel" id="phone" value="+91 98765 43210" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label for="date-of-birth">Date of Birth</label>
+                                <input type="date" id="date-of-birth" value="1995-06-15" readonly>
+                            </div>
+                            <div class="form-group full-width">
+                                <label for="address">Address</label>
+                                <textarea id="address" rows="3" readonly>Flat 301, Building B, Andheri East, Mumbai, Maharashtra - 400069</textarea>
+                            </div>
+                        </div>
+                        <div class="form-actions" style="display: none;" id="personal-info-actions">
+                            <button class="btn btn-secondary" id="cancel-personal-edit">Cancel</button>
+                            <button class="btn btn-primary" id="save-personal-info">
+                                <i class="fas fa-save"></i>
+                                Save Changes
+                            </button>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Vehicle Details -->
+                <section class="profile-section">
+                    <div class="section-header">
+                        <h3>
+                            <i class="fas fa-motorcycle"></i>
+                            Vehicle Details
+                        </h3>
+                        <button class="edit-btn" id="edit-vehicle-info">
+                            <i class="fas fa-edit"></i>
+                            Edit
+                        </button>
+                    </div>
+                    
+                    <div class="profile-form" id="vehicle-info-form">
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="vehicle-type">Vehicle Type</label>
+                                <select id="vehicle-type" disabled>
+                                    <option value="bike" selected>Motorcycle/Bike</option>
+                                    <option value="scooter">Scooter</option>
+                                    <option value="cycle">Bicycle</option>
+                                    <option value="car">Car</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="vehicle-brand">Brand & Model</label>
+                                <input type="text" id="vehicle-brand" value="Honda Activa 6G" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label for="vehicle-number">Registration Number</label>
+                                <input type="text" id="vehicle-number" value="MH 02 AB 1234" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label for="license-number">Driving License Number</label>
+                                <input type="text" id="license-number" value="MH0220230012345" readonly>
+                            </div>
+                        </div>
+                        <div class="form-actions" style="display: none;" id="vehicle-info-actions">
+                            <button class="btn btn-secondary" id="cancel-vehicle-edit">Cancel</button>
+                            <button class="btn btn-primary" id="save-vehicle-info">
+                                <i class="fas fa-save"></i>
+                                Save Changes
+                            </button>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- KYC & Document Upload -->
+                <section class="profile-section">
+                    <div class="section-header">
+                        <h3>
+                            <i class="fas fa-shield-alt"></i>
+                            KYC & Document Verification
+                        </h3>
+                        <div class="verification-status verified">
+                            <i class="fas fa-check-circle"></i>
+                            Verified
+                        </div>
+                    </div>
+                    
+                    <div class="documents-grid">
+                        <div class="document-card">
+                            <div class="document-header">
+                                <div class="document-icon">
+                                    <i class="fas fa-id-card"></i>
+                                </div>
+                                <div class="document-info">
+                                    <h4>Aadhaar Card</h4>
+                                    <p>Identity Verification</p>
+                                </div>
+                                <div class="document-status verified">
+                                    <i class="fas fa-check-circle"></i>
+                                </div>
+                            </div>
+                            <div class="document-details">
+                                <span class="document-number">XXXX XXXX 1234</span>
+                                <span class="upload-date">Uploaded: Jan 10, 2025</span>
+                            </div>
+                            <div class="document-actions">
+                                <button class="btn btn-outline">
+                                    <i class="fas fa-eye"></i>
+                                    View
+                                </button>
+                                <button class="btn btn-outline">
+                                    <i class="fas fa-upload"></i>
+                                    Re-upload
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="document-card">
+                            <div class="document-header">
+                                <div class="document-icon">
+                                    <i class="fas fa-credit-card"></i>
+                                </div>
+                                <div class="document-info">
+                                    <h4>PAN Card</h4>
+                                    <p>Tax Identification</p>
+                                </div>
+                                <div class="document-status verified">
+                                    <i class="fas fa-check-circle"></i>
+                                </div>
+                            </div>
+                            <div class="document-details">
+                                <span class="document-number">ABCDE1234F</span>
+                                <span class="upload-date">Uploaded: Jan 10, 2025</span>
+                            </div>
+                            <div class="document-actions">
+                                <button class="btn btn-outline">
+                                    <i class="fas fa-eye"></i>
+                                    View
+                                </button>
+                                <button class="btn btn-outline">
+                                    <i class="fas fa-upload"></i>
+                                    Re-upload
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="document-card">
+                            <div class="document-header">
+                                <div class="document-icon">
+                                    <i class="fas fa-id-badge"></i>
+                                </div>
+                                <div class="document-info">
+                                    <h4>Driving License</h4>
+                                    <p>Driving Authorization</p>
+                                </div>
+                                <div class="document-status verified">
+                                    <i class="fas fa-check-circle"></i>
+                                </div>
+                            </div>
+                            <div class="document-details">
+                                <span class="document-number">MH0220230012345</span>
+                                <span class="upload-date">Uploaded: Jan 10, 2025</span>
+                            </div>
+                            <div class="document-actions">
+                                <button class="btn btn-outline">
+                                    <i class="fas fa-eye"></i>
+                                    View
+                                </button>
+                                <button class="btn btn-outline">
+                                    <i class="fas fa-upload"></i>
+                                    Re-upload
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="document-card">
+                            <div class="document-header">
+                                <div class="document-icon">
+                                    <i class="fas fa-user-circle"></i>
+                                </div>
+                                <div class="document-info">
+                                    <h4>Profile Picture</h4>
+                                    <p>Identity Photo</p>
+                                </div>
+                                <div class="document-status verified">
+                                    <i class="fas fa-check-circle"></i>
+                                </div>
+                            </div>
+                            <div class="document-details">
+                                <span class="document-number">profile_photo.jpg</span>
+                                <span class="upload-date">Uploaded: Jan 10, 2025</span>
+                            </div>
+                            <div class="document-actions">
+                                <button class="btn btn-outline">
+                                    <i class="fas fa-eye"></i>
+                                    View
+                                </button>
+                                <button class="btn btn-outline">
+                                    <i class="fas fa-upload"></i>
+                                    Re-upload
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Earnings Summary -->
+                <section class="profile-section">
+                    <div class="section-header">
+                        <h3>
+                            <i class="fas fa-wallet"></i>
+                            Earnings Summary
+                        </h3>
+                        <a href="earnings.html" class="view-all-btn">
+                            View All
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                    
+                    <div class="earnings-summary-grid">
+                        <div class="earnings-card">
+                            <div class="earnings-icon">
+                                <i class="fas fa-calendar-day"></i>
+                            </div>
+                            <div class="earnings-content">
+                                <h4>₹450</h4>
+                                <p>Today's Earnings</p>
+                            </div>
+                        </div>
+                        <div class="earnings-card">
+                            <div class="earnings-icon">
+                                <i class="fas fa-calendar-week"></i>
+                            </div>
+                            <div class="earnings-content">
+                                <h4>₹2,850</h4>
+                                <p>This Week</p>
+                            </div>
+                        </div>
+                        <div class="earnings-card">
+                            <div class="earnings-icon">
+                                <i class="fas fa-calendar-alt"></i>
+                            </div>
+                            <div class="earnings-content">
+                                <h4>₹12,450</h4>
+                                <p>This Month</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Settings -->
+                <section class="profile-section">
+                    <div class="section-header">
+                        <h3>
+                            <i class="fas fa-cog"></i>
+                            Settings
+                        </h3>
+                    </div>
+                    
+                    <div class="settings-list">
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <h4>Availability Status</h4>
+                                <p>Control when you receive new delivery assignments</p>
+                            </div>
+                            <div class="setting-control">
+                                <label class="toggle-switch">
+                                    <input type="checkbox" id="availability-toggle" checked>
+                                    <span class="toggle-slider"></span>
+                                </label>
+                                <span class="toggle-label" id="availability-label">Available</span>
+                            </div>
+                        </div>
+                        
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <h4>Push Notifications</h4>
+                                <p>Receive notifications for new orders and updates</p>
+                            </div>
+                            <div class="setting-control">
+                                <label class="toggle-switch">
+                                    <input type="checkbox" id="notifications-toggle" checked>
+                                    <span class="toggle-slider"></span>
+                                </label>
+                                <span class="toggle-label">Enabled</span>
+                            </div>
+                        </div>
+                        
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <h4>Change Password</h4>
+                                <p>Update your account password for security</p>
+                            </div>
+                            <div class="setting-control">
+                                <button class="btn btn-outline" id="change-password-btn">
+                                    <i class="fas fa-key"></i>
+                                    Change Password
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <h4>Language</h4>
+                                <p>Choose your preferred language</p>
+                            </div>
+                            <div class="setting-control">
+                                <select class="setting-select" id="language-select">
+                                    <option value="en" selected>English</option>
+                                    <option value="hi">हिंदी (Hindi)</option>
+                                    <option value="mr">मराठी (Marathi)</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <!-- Change Password Modal -->
+    <div class="modal" id="change-password-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Change Password</h3>
+                <button class="close-btn" id="close-password-modal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="change-password-form">
+                    <div class="form-group">
+                        <label for="current-password">Current Password</label>
+                        <input type="password" id="current-password" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="new-password">New Password</label>
+                        <input type="password" id="new-password" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="confirm-password">Confirm New Password</label>
+                        <input type="password" id="confirm-password" required>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" id="cancel-password-change">Cancel</button>
+                <button class="btn btn-primary" id="confirm-password-change">
+                    <i class="fas fa-save"></i>
+                    Update Password
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- File Upload Modal -->
+    <div class="modal" id="file-upload-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Upload Document</h3>
+                <button class="close-btn" id="close-upload-modal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="upload-area" id="upload-area">
+                    <div class="upload-icon">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                    </div>
+                    <p class="upload-text">Drag and drop your file here or click to browse</p>
+                    <p class="upload-hint">Supported formats: JPG, PNG, PDF (Max 5MB)</p>
+                    <input type="file" id="file-input" accept=".jpg,.jpeg,.png,.pdf" hidden>
+                </div>
+                <div class="upload-progress" id="upload-progress" style="display: none;">
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progress-fill"></div>
+                    </div>
+                    <span class="progress-text" id="progress-text">0%</span>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" id="cancel-upload">Cancel</button>
+                <button class="btn btn-primary" id="confirm-upload" disabled>
+                    <i class="fas fa-upload"></i>
+                    Upload File
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../assets/js/delivery.js"></script>
+</body>
+</html>
+
