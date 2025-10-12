@@ -1,6 +1,9 @@
-# DigiBhoj
+# DigiBhoj - Mess & Tiffin Management System
 
 DigiBhoj is a comprehensive web platform designed to digitize the tiffin and mess service ecosystem. It provides dedicated interfaces for three key user roles. Customers, Mess Providers, and Delivery Partners - to create a seamless food ordering and delivery experience.
+
+## 🚀 Live Demo
+**Frontend:** [DigiBhoj Live](https://mohitpandeycs.github.io/Digibhoj/)  
 
 ## Key Features
 
@@ -107,4 +110,10 @@ To run this project locally, follow these steps:
 - 💼 **LinkedIn**: [@mohitpandeycs](https://linkedin.com/in/mohitpandeycs)
 
 ---
+<div align="center">
+
+### *Bringing the food on right table*
+
+[![GitHub Repo](https://img.shields.io/badge/GitHub-Digibhoj-blue?style=for-the-badge&logo=github)](https://github.com/mohitpandeycs/Digibhoj) 
+
 **[⭐ Star this repo](https://github.com/mohitpandeycs/Digibhoj) • [🐛 Report Bug](https://github.com/mohitpandeycs/Digibhoj/issues) • [💡 Request Feature](https://github.com/mohitpandeycs/Digibhoj/issues/new)**
