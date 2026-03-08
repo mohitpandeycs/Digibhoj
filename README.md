@@ -106,8 +106,8 @@ To run this project locally, follow these steps:
     - **Delivery Partner**: `delivery/dashboard.html`
 
 ### **Connect With Me**
-- 🐙 **GitHub**: [@mohitpandeycs](https://github.com/mohitpandeycs)
-- 💼 **LinkedIn**: [@mohitpandeycs](https://linkedin.com/in/mohitpandeycs)
+- **GitHub**: [@mohitpandeycs](https://github.com/mohitpandeycs)
+- **LinkedIn**: [@mohitpandeycs](https://linkedin.com/in/mohitpandeycs)
 
 ---
 <div align="center">
