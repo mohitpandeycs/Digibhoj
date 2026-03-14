@@ -108,6 +108,8 @@ To run this project locally, follow these steps:
 ### **Connect With Me**
 - **GitHub**: [@mohitpandeycs](https://github.com/mohitpandeycs)
 - **LinkedIn**: [@mohitpandeycs](https://linkedin.com/in/mohitpandeycs)
+- **Twitter / X**: [@mohitpandeycs](https://x.com/mohitpandeycs)
+
 
 ---
 <div align="center">
